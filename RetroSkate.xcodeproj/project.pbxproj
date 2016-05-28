@@ -16,6 +16,14 @@
 		364E70CD1CF8E54A00925C5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 364E70CC1CF8E54A00925C5B /* Assets.xcassets */; };
 		364E70D81CF8E54A00925C5B /* RetroSkateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70D71CF8E54A00925C5B /* RetroSkateTests.swift */; };
 		364E70E31CF8E54A00925C5B /* RetroSkateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70E21CF8E54A00925C5B /* RetroSkateUITests.swift */; };
+		364E70F51CF8E7CF00925C5B /* TextureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70F41CF8E7CF00925C5B /* TextureManager.swift */; };
+		364E70F81CF8E87600925C5B /* TextureManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70F71CF8E87600925C5B /* TextureManagerTest.swift */; };
+		364E70FA1CF8FD5900925C5B /* PhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70F91CF8FD5900925C5B /* PhysicsBody.swift */; };
+		364E70FE1CF9066500925C5B /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70FD1CF9066500925C5B /* Obstacle.swift */; };
+		364E71011CF908C100925C5B /* SKNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71001CF908C100925C5B /* SKNodeExtension.swift */; };
+		364E71031CF9095000925C5B /* Dumpster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71021CF9095000925C5B /* Dumpster.swift */; };
+		364E71051CF90C6D00925C5B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71041CF90C6D00925C5B /* Player.swift */; };
+		364E71071CF90FC500925C5B /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71061CF90FC500925C5B /* GameManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +59,14 @@
 		364E70DE1CF8E54A00925C5B /* RetroSkateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RetroSkateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		364E70E21CF8E54A00925C5B /* RetroSkateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroSkateUITests.swift; sourceTree = "<group>"; };
 		364E70E41CF8E54A00925C5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		364E70F41CF8E7CF00925C5B /* TextureManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextureManager.swift; sourceTree = "<group>"; };
+		364E70F71CF8E87600925C5B /* TextureManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextureManagerTest.swift; sourceTree = "<group>"; };
+		364E70F91CF8FD5900925C5B /* PhysicsBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsBody.swift; sourceTree = "<group>"; };
+		364E70FD1CF9066500925C5B /* Obstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
+		364E71001CF908C100925C5B /* SKNodeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNodeExtension.swift; sourceTree = "<group>"; };
+		364E71021CF9095000925C5B /* Dumpster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dumpster.swift; sourceTree = "<group>"; };
+		364E71041CF90C6D00925C5B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		364E71061CF90FC500925C5B /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +117,14 @@
 		364E70BE1CF8E54900925C5B /* RetroSkate */ = {
 			isa = PBXGroup;
 			children = (
+				364E70FF1CF908A700925C5B /* Extensions */,
+				364E70FC1CF9065300925C5B /* Sprites */,
+				364E70F31CF8E7BC00925C5B /* Managers */,
+				364E70F21CF8E5F900925C5B /* Resources */,
+				364E70F11CF8E5EE00925C5B /* Scenes */,
+				364E70F01CF8E5D000925C5B /* Controllers */,
 				364E70BF1CF8E54900925C5B /* AppDelegate.swift */,
-				364E70C11CF8E54900925C5B /* GameScene.sks */,
-				364E70C31CF8E54900925C5B /* GameScene.swift */,
-				364E70C51CF8E54900925C5B /* GameViewController.swift */,
-				364E70C71CF8E54900925C5B /* Game.xcassets */,
 				364E70C91CF8E54900925C5B /* Main.storyboard */,
-				364E70CC1CF8E54A00925C5B /* Assets.xcassets */,
-				364E70CE1CF8E54A00925C5B /* Info.plist */,
 			);
 			path = RetroSkate;
 			sourceTree = "<group>";
@@ -116,6 +132,7 @@
 		364E70D61CF8E54A00925C5B /* RetroSkateTests */ = {
 			isa = PBXGroup;
 			children = (
+				364E70F61CF8E86500925C5B /* Managers */,
 				364E70D71CF8E54A00925C5B /* RetroSkateTests.swift */,
 				364E70D91CF8E54A00925C5B /* Info.plist */,
 			);
@@ -129,6 +146,77 @@
 				364E70E41CF8E54A00925C5B /* Info.plist */,
 			);
 			path = RetroSkateUITests;
+			sourceTree = "<group>";
+		};
+		364E70F01CF8E5D000925C5B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				364E70C51CF8E54900925C5B /* GameViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		364E70F11CF8E5EE00925C5B /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				364E70FB1CF8FDA000925C5B /* Models */,
+				364E70C11CF8E54900925C5B /* GameScene.sks */,
+				364E70C31CF8E54900925C5B /* GameScene.swift */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		364E70F21CF8E5F900925C5B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				364E70C71CF8E54900925C5B /* Game.xcassets */,
+				364E70CC1CF8E54A00925C5B /* Assets.xcassets */,
+				364E70CE1CF8E54A00925C5B /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		364E70F31CF8E7BC00925C5B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				364E70F41CF8E7CF00925C5B /* TextureManager.swift */,
+				364E71061CF90FC500925C5B /* GameManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		364E70F61CF8E86500925C5B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				364E70F71CF8E87600925C5B /* TextureManagerTest.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		364E70FB1CF8FDA000925C5B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				364E70F91CF8FD5900925C5B /* PhysicsBody.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		364E70FC1CF9065300925C5B /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				364E70FD1CF9066500925C5B /* Obstacle.swift */,
+				364E71021CF9095000925C5B /* Dumpster.swift */,
+				364E71041CF90C6D00925C5B /* Player.swift */,
+			);
+			name = Sprites;
+			sourceTree = "<group>";
+		};
+		364E70FF1CF908A700925C5B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				364E71001CF908C100925C5B /* SKNodeExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,8 +352,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				364E70C41CF8E54900925C5B /* GameScene.swift in Sources */,
+				364E70FA1CF8FD5900925C5B /* PhysicsBody.swift in Sources */,
+				364E70FE1CF9066500925C5B /* Obstacle.swift in Sources */,
+				364E71011CF908C100925C5B /* SKNodeExtension.swift in Sources */,
 				364E70C61CF8E54900925C5B /* GameViewController.swift in Sources */,
+				364E71031CF9095000925C5B /* Dumpster.swift in Sources */,
 				364E70C01CF8E54900925C5B /* AppDelegate.swift in Sources */,
+				364E71051CF90C6D00925C5B /* Player.swift in Sources */,
+				364E70F51CF8E7CF00925C5B /* TextureManager.swift in Sources */,
+				364E71071CF90FC500925C5B /* GameManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				364E70D81CF8E54A00925C5B /* RetroSkateTests.swift in Sources */,
+				364E70F81CF8E87600925C5B /* TextureManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
