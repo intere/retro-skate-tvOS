@@ -10,6 +10,8 @@ import XCTest
 @testable import RetroSkate
 
 class TextureManagerTest: XCTestCase {
+
+    private let ERROR_SIZE = CGSize(width: 128, height: 128)
     
     override func setUp() {
         super.setUp()
@@ -27,10 +29,10 @@ class TextureManagerTest: XCTestCase {
 extension TextureManagerTest {
 
     func testGetBackgrounds() {
-        XCTAssertNotNil(TextureManager.sharedManager.bg1Texture)
-        XCTAssertNotNil(TextureManager.sharedManager.bg2Texture)
-        XCTAssertNotNil(TextureManager.sharedManager.bg3Texture)
-        XCTAssertNotNil(TextureManager.sharedManager.asphaltTexture)
+        XCTAssertNotEqual(ERROR_SIZE, TextureManager.sharedManager.frontBackgroundTexture.size())
+        XCTAssertNotEqual(ERROR_SIZE, TextureManager.sharedManager.midBackgroundTexture.size())
+        XCTAssertNotEqual(ERROR_SIZE, TextureManager.sharedManager.farBackgroundTexture.size())
+        XCTAssertNotEqual(ERROR_SIZE, TextureManager.sharedManager.asphaltTexture.size())
     }
 
 }
@@ -40,7 +42,7 @@ extension TextureManagerTest {
 extension TextureManagerTest {
 
     func testGetObstacles() {
-        XCTAssertNotNil(TextureManager.sharedManager.dumpsterTexture)
+        XCTAssertNotEqual(ERROR_SIZE, TextureManager.sharedManager.dumpsterTexture.size())
     }
 }
 
@@ -51,6 +53,9 @@ extension TextureManagerTest {
     func testGetSkaterAnimation() {
         XCTAssertNotNil(TextureManager.sharedManager.skaterAnimationTextures)
         XCTAssertEqual(12, TextureManager.sharedManager.skaterAnimationTextures.count)
+        for texture in TextureManager.sharedManager.skaterAnimationTextures {
+            XCTAssertNotEqual(ERROR_SIZE, texture.size())
+        }
     }
 
 }

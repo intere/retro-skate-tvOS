@@ -24,6 +24,12 @@
 		364E71031CF9095000925C5B /* Dumpster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71021CF9095000925C5B /* Dumpster.swift */; };
 		364E71051CF90C6D00925C5B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71041CF90C6D00925C5B /* Player.swift */; };
 		364E71071CF90FC500925C5B /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71061CF90FC500925C5B /* GameManager.swift */; };
+		364E71091CF9CF0000925C5B /* Asphalt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71081CF9CEFF00925C5B /* Asphalt.swift */; };
+		364E710B1CF9D2AD00925C5B /* ScrollingSceneryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E710A1CF9D2AD00925C5B /* ScrollingSceneryManager.swift */; };
+		364E710D1CF9D92400925C5B /* Sidewalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E710C1CF9D92400925C5B /* Sidewalk.swift */; };
+		364E710F1CF9DB0800925C5B /* FarBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E710E1CF9DB0800925C5B /* FarBackground.swift */; };
+		364E71111CF9DB2600925C5B /* MidBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71101CF9DB2600925C5B /* MidBackground.swift */; };
+		364E71131CF9DB3700925C5B /* FrontBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71121CF9DB3700925C5B /* FrontBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +73,12 @@
 		364E71021CF9095000925C5B /* Dumpster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dumpster.swift; sourceTree = "<group>"; };
 		364E71041CF90C6D00925C5B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		364E71061CF90FC500925C5B /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		364E71081CF9CEFF00925C5B /* Asphalt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asphalt.swift; sourceTree = "<group>"; };
+		364E710A1CF9D2AD00925C5B /* ScrollingSceneryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingSceneryManager.swift; sourceTree = "<group>"; };
+		364E710C1CF9D92400925C5B /* Sidewalk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sidewalk.swift; sourceTree = "<group>"; };
+		364E710E1CF9DB0800925C5B /* FarBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarBackground.swift; sourceTree = "<group>"; };
+		364E71101CF9DB2600925C5B /* MidBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MidBackground.swift; sourceTree = "<group>"; };
+		364E71121CF9DB3700925C5B /* FrontBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +193,7 @@
 			children = (
 				364E70F41CF8E7CF00925C5B /* TextureManager.swift */,
 				364E71061CF90FC500925C5B /* GameManager.swift */,
+				364E710A1CF9D2AD00925C5B /* ScrollingSceneryManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -207,6 +220,11 @@
 				364E70FD1CF9066500925C5B /* Obstacle.swift */,
 				364E71021CF9095000925C5B /* Dumpster.swift */,
 				364E71041CF90C6D00925C5B /* Player.swift */,
+				364E71081CF9CEFF00925C5B /* Asphalt.swift */,
+				364E710C1CF9D92400925C5B /* Sidewalk.swift */,
+				364E710E1CF9DB0800925C5B /* FarBackground.swift */,
+				364E71101CF9DB2600925C5B /* MidBackground.swift */,
+				364E71121CF9DB3700925C5B /* FrontBackground.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -352,15 +370,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				364E70C41CF8E54900925C5B /* GameScene.swift in Sources */,
+				364E710F1CF9DB0800925C5B /* FarBackground.swift in Sources */,
 				364E70FA1CF8FD5900925C5B /* PhysicsBody.swift in Sources */,
 				364E70FE1CF9066500925C5B /* Obstacle.swift in Sources */,
 				364E71011CF908C100925C5B /* SKNodeExtension.swift in Sources */,
+				364E710D1CF9D92400925C5B /* Sidewalk.swift in Sources */,
 				364E70C61CF8E54900925C5B /* GameViewController.swift in Sources */,
 				364E71031CF9095000925C5B /* Dumpster.swift in Sources */,
 				364E70C01CF8E54900925C5B /* AppDelegate.swift in Sources */,
+				364E71131CF9DB3700925C5B /* FrontBackground.swift in Sources */,
 				364E71051CF90C6D00925C5B /* Player.swift in Sources */,
 				364E70F51CF8E7CF00925C5B /* TextureManager.swift in Sources */,
+				364E710B1CF9D2AD00925C5B /* ScrollingSceneryManager.swift in Sources */,
+				364E71111CF9DB2600925C5B /* MidBackground.swift in Sources */,
 				364E71071CF90FC500925C5B /* GameManager.swift in Sources */,
+				364E71091CF9CF0000925C5B /* Asphalt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

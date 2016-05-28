@@ -12,9 +12,9 @@ class TextureManager {
     static let sharedManager = TextureManager()
 
     // Background
-    var bg1Texture = SKTexture(imageNamed: "bg1")
-    var bg2Texture = SKTexture(imageNamed: "bg2")
-    var bg3Texture = SKTexture(imageNamed: "bg3")
+    var frontBackgroundTexture = SKTexture(imageNamed: "bg1")
+    var midBackgroundTexture = SKTexture(imageNamed: "bg2")
+    var farBackgroundTexture = SKTexture(imageNamed: "bg3")
 
     // Asphalt
     var asphaltTexture = SKTexture(imageNamed: "asphalt")
