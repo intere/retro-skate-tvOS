@@ -51,9 +51,9 @@ extension TextureManagerTest {
 extension TextureManagerTest {
 
     func testGetSkaterAnimation() {
-        XCTAssertNotNil(TextureManager.sharedManager.skaterAnimationTextures)
-        XCTAssertEqual(12, TextureManager.sharedManager.skaterAnimationTextures.count)
-        for texture in TextureManager.sharedManager.skaterAnimationTextures {
+        XCTAssertNotNil(TextureManager.sharedManager.skaterPushTextures)
+        XCTAssertEqual(12, TextureManager.sharedManager.skaterPushTextures.count)
+        for texture in TextureManager.sharedManager.skaterPushTextures {
             XCTAssertNotEqual(ERROR_SIZE, texture.size())
         }
     }

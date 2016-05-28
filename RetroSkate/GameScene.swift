@@ -11,9 +11,14 @@ import SpriteKit
 class GameScene: SKScene {
     let ASP_PIECES = 15
     let SIDEWALK_PIECES = 24
-    let X_RESET: CGFloat = -912
+    let BACKGROUND_X_RESET: CGFloat = -912
 
     var player: Player!
+    var dumpster: Dumpster!
+    var dumpsterTop: DumpsterTop!
+
+    var buildings = [SKSpriteNode]()
+    var gameOver = false
 
     override func didMoveToView(view: SKView) {
         setupBackground()
@@ -27,6 +32,7 @@ class GameScene: SKScene {
         setupObstacles()
 
         setupPhysics()
+        playLevelMusic()
     }
    
     override func update(currentTime: CFTimeInterval) {
@@ -69,9 +75,9 @@ extension GameScene {
             addChild(farBackground)
         }
 
-        ScrollingSceneryManager.sharedManager.addScrollingScenery(frontBG, startPosition: CGPoint(x: 0, y: 400), resetXPosition: X_RESET, moveSpeed: -2)
-        ScrollingSceneryManager.sharedManager.addScrollingScenery(midBG, startPosition: CGPoint(x: 0, y: 450), resetXPosition: X_RESET, moveSpeed: -1)
-        ScrollingSceneryManager.sharedManager.addScrollingScenery(farBG, startPosition: CGPoint(x: 0, y: 500), resetXPosition: X_RESET, moveSpeed: -0.5)
+        ScrollingSceneryManager.sharedManager.addScrollingScenery(frontBG, startPosition: CGPoint(x: 0, y: 400), resetXPosition: BACKGROUND_X_RESET, moveSpeed: -2)
+        ScrollingSceneryManager.sharedManager.addScrollingScenery(midBG, startPosition: CGPoint(x: 0, y: 450), resetXPosition: BACKGROUND_X_RESET, moveSpeed: -1)
+        ScrollingSceneryManager.sharedManager.addScrollingScenery(farBG, startPosition: CGPoint(x: 0, y: 500), resetXPosition: BACKGROUND_X_RESET, moveSpeed: -0.5)
     }
 
     func setupGround() {
@@ -82,7 +88,7 @@ extension GameScene {
             asphaltPieces.append(asphalt)
             addChild(asphalt)
         }
-        ScrollingSceneryManager.sharedManager.addScrollingScenery(asphaltPieces, startPosition: CGPoint(x: 0, y: 144), resetXPosition: GameManager.sharedManager.GROUND_X_RESET, moveSpeed: GameManager.sharedManager.GROUND_SPEED)
+        ScrollingSceneryManager.sharedManager.addScrollingScenery(asphaltPieces, startPosition: CGPoint(x: 0, y: 145), resetXPosition: GameManager.sharedManager.GROUND_X_RESET, moveSpeed: GameManager.sharedManager.GROUND_SPEED)
 
         var sidewalkPieces = [SKSpriteNode]()
 
@@ -95,15 +101,46 @@ extension GameScene {
     }
 
     func setupObstacles() {
-        let dumpster = Dumpster()
+        dumpster = Dumpster()
         addChild(dumpster)
         dumpster.startMoving()
+
+        dumpsterTop = DumpsterTop()
+        addChild(dumpsterTop)
+        dumpsterTop.position = CGPoint(x: dumpster.position.x, y: dumpster.position.y + 50)
+        dumpsterTop.startMoving()
+
+        for i  in 0..<3 {
+            let wait = SKAction.waitForDuration(NSTimeInterval(2 * i))
+            runAction(wait) {
+                guard !self.gameOver else {
+                    return
+                }
+                let building = Building()
+                self.buildings.append(building)
+                self.addChild(building)
+                building.startMoving()
+            }
+        }
     }
 
     func setupActions() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped(_:)))
         tap.allowedPressTypes = [NSNumber(integer: UIPressType.Select.rawValue)]
         view?.addGestureRecognizer(tap)
+    }
+
+
+    func playLevelMusic() {
+        AudioManager.sharedManager.playLevelMusic()
+    }
+
+    func stopPlayLevelMusic() {
+        AudioManager.sharedManager.stopLevelMusic()
+    }
+
+    func playGameOverSound() {
+        runAction(SKAction.playSoundFileNamed("sfxGameOver.wav", waitForCompletion: false))
     }
 }
 
@@ -112,11 +149,20 @@ extension GameScene {
 extension GameScene : SKPhysicsContactDelegate {
 
     func didBeginContact(contact: SKPhysicsContact) {
-
-        if contact.bodyA.categoryBitMask == PhysicsBody.Obstacle.rawValue || contact.bodyB.categoryBitMask == PhysicsBody.Obstacle.rawValue {
-            print("💀 Hit an obstacle.  Skate or Die!  Oh, you died.  😬")
+        guard !gameOver else {
+            return
+        }
+        guard contact.bodyA.categoryBitMask != PhysicsBody.Rideable.rawValue && contact.bodyB.categoryBitMask != PhysicsBody.Rideable.rawValue else {
+            return
         }
 
+        print("💀 Collision")
+
+        if contact.bodyA.categoryBitMask == PhysicsBody.Obstacle.rawValue {
+            handleCollision()
+        } else if contact.bodyB.categoryBitMask == PhysicsBody.Obstacle.rawValue {
+            handleCollision()
+        }
     }
 
 }
@@ -126,7 +172,41 @@ extension GameScene : SKPhysicsContactDelegate {
 extension GameScene {
 
     func tapped(gesture: UITapGestureRecognizer) {
+        guard !gameOver else {
+            return
+        }
         player.jump()
+    }
+
+}
+
+
+// MARK: - Helpers
+
+private extension GameScene {
+
+    func handleCollision() {
+        dumpster.physicsBody?.dynamic = false
+        dumpsterTop.physicsBody?.dynamic = false
+        dumpster.physicsBody = nil
+        dumpsterTop.physicsBody = nil
+        gameOver = true
+
+        for node in children {
+            node.removeAllActions()
+        }
+
+        player.playCrashAnimation()
+        stopPlayLevelMusic()
+        playGameOverSound()
+
+        runAction(SKAction.sequence([SKAction.waitForDuration(5), SKAction.runBlock {
+            guard let scene = GameScene(fileNamed: "GameScene") else {
+                return
+            }
+            scene.scaleMode = .AspectFill
+            self.view!.presentScene(scene, transition: SKTransition.crossFadeWithDuration(1))
+        }]))
     }
 
 }

@@ -26,7 +26,16 @@ class TextureManager {
     var dumpsterTexture = SKTexture(imageNamed: "dumpster")
 
     // Animations
-    var skaterAnimationTextures = TextureManager.loadTextures("push", startIndex: 0, endIndex: 11)
+    var skaterPushTextures = TextureManager.loadTextures("push", startIndex: 0, endIndex: 11)
+    var skaterCrashTextures = TextureManager.loadTextures("crash", startIndex: 0, endIndex: 8)
+
+    // Buildings
+    private var buildingTextures = TextureManager.loadTextures("building", startIndex: 0, endIndex: 7)
+
+    
+    var randomBuildingTexture: SKTexture {
+        return buildingTextures[Int(arc4random_uniform(8))]
+    }
 }
 
 

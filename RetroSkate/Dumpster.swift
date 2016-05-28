@@ -12,13 +12,18 @@ class Dumpster: Obstacle {
 
     convenience init() {
         self.init(texture: TextureManager.sharedManager.dumpsterTexture)
+        yPos = 180
+        zPosition = 6
     }
 
     override func initPhysics() {
-        let frontCollider = SKPhysicsBody(rectangleOfSize: CGSize(width: 5, height: size.height), center: CGPoint(x: -size.width/2, y: 0))
-        let topCollider = SKPhysicsBody(rectangleOfSize: CGSize(width: size.width*0.8, height: 5), center: CGPoint(x: 0, y: size.height/2 - 7))
+        let frontCollider = SKPhysicsBody(rectangleOfSize: CGSize(width: 5, height: size.height-20), center: CGPoint(x: -size.width/2, y: 0))
+        frontCollider.categoryBitMask = PhysicsBody.Obstacle.rawValue
+        frontCollider.contactTestBitMask = PhysicsBody.Player.rawValue
 
-        physicsBody = SKPhysicsBody(bodies: [frontCollider, topCollider])
+        physicsBody = frontCollider
+
+
         super.initPhysics()
     }
 }

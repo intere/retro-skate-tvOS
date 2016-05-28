@@ -21,9 +21,10 @@ class Asphalt: SKSpriteNode {
 private extension Asphalt {
 
     func setupPhysics() {
-        let collider = SKPhysicsBody(rectangleOfSize: CGSize(width: size.width, height: 5), center: CGPoint(x: 0, y: -20))
-        physicsBody = collider
+        let collider = SKPhysicsBody(rectangleOfSize: CGSize(width: size.width, height: 5), center: CGPoint(x: 0, y: -10))
+        collider.categoryBitMask = PhysicsBody.Rideable.rawValue
 
+        physicsBody = collider
         physicsBody?.dynamic = false
         physicsBody?.allowsRotation = false
     }

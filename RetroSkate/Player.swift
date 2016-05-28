@@ -14,7 +14,7 @@ class Player: SKSpriteNode {
     var isJumping = false
 
     convenience init() {
-        self.init(texture: TextureManager.sharedManager.skaterAnimationTextures.first)
+        self.init(texture: TextureManager.sharedManager.skaterPushTextures.first)
         setupCharacter()
     }
 
@@ -28,7 +28,7 @@ class Player: SKSpriteNode {
     }
 }
 
-// MARK: - Public Interface
+// MARK: - API
 
 extension Player {
 
@@ -40,6 +40,17 @@ extension Player {
         }
         physicsBody?.applyImpulse(CGVector(dx: 0, dy: 60))
         isJumping = true
+        runAction(SKAction.playSoundFileNamed("sfxOllie.wav", waitForCompletion: false))
+    }
+
+    func playPushAnimation() {
+        removeAllActions()
+        runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(TextureManager.sharedManager.skaterPushTextures, timePerFrame: 0.1)))
+    }
+
+    func playCrashAnimation() {
+        removeAllActions()
+        runAction(SKAction.animateWithTextures(TextureManager.sharedManager.skaterCrashTextures, timePerFrame: 0.04))
     }
 
 }
@@ -51,17 +62,14 @@ extension Player {
     func setupCharacter() {
         position = CHARACTER_POSITION
         zPosition = 10
-        runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(TextureManager.sharedManager.skaterAnimationTextures, timePerFrame: 0.1)))
-
         configurePhysicsBody()
+        playPushAnimation()
     }
 
     /// Configure the Physics Body for a Skater
     func configurePhysicsBody() {
-        let frontCollider = SKPhysicsBody(rectangleOfSize: CGSize(width: 5, height: size.height * 0.8), center: CGPoint(x: 25, y: 0 ))
-        let bottomCollider = SKPhysicsBody(rectangleOfSize: CGSize(width: size.width / 2, height: 5), center: CGPoint(x: 0, y: -size.height / 2 + 5))
-
-        physicsBody = SKPhysicsBody(bodies: [frontCollider, bottomCollider])
+        let bottomCollider = SKPhysicsBody(rectangleOfSize: CGSize(width: size.width / 2, height: size.height-30), center: CGPoint(x: 0, y: -5))
+        physicsBody = bottomCollider
         physicsBody?.restitution = 0
         physicsBody?.linearDamping = 0.1
         physicsBody?.allowsRotation = false
