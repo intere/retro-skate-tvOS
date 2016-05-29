@@ -123,6 +123,16 @@ extension GameScene {
         addChild(hydrant)
         hydrant.startMoving()
 
+        let rail = Rail()
+        addChild(rail)
+        addChild(rail.top)
+        rail.startMoving()
+
+        let ledge = Ledge()
+        addChild(ledge)
+        addChild(ledge.top)
+        ledge.startMoving()
+
         waitAndRunBlock(5, repititions: 3) {
             let building = Building()
             self.addChild(building)

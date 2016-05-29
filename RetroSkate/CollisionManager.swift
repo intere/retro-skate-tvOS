@@ -29,10 +29,10 @@ extension CollisionManager {
 
         if let coin = contact.bodyA.node as? Coin ?? contact.bodyB.node as? Coin {
             handleCoinCollection(coin)
-        } else if let dumpster = contact.bodyA.node as? Dumpster ?? contact.bodyB.node as? Dumpster {
-            handleDumpsterCollision(dumpster)
-        } else if let hydrant = contact.bodyA.node as? FireHydrant ?? contact.bodyB.node as? FireHydrant {
-            handleFireHydrantCollision(hydrant)
+        } else if let rideableObstacle = contact.bodyA.node as? RideableObstacle ?? contact.bodyB.node as? RideableObstacle {
+            handleRideableObstacleCollision(rideableObstacle)
+        } else if let obstacle = contact.bodyA.node as? Obstacle ?? contact.bodyB.node as? Obstacle {
+            handleObstacleCollision(obstacle)
         }
     }
 
@@ -53,16 +53,16 @@ extension CollisionManager {
         scene.runAction(SKAction.playSoundFileNamed("sfxButtonPress.wav", waitForCompletion: false))
     }
 
-    func handleDumpsterCollision(dumpster: Dumpster) {
-        dumpster.physicsBody?.dynamic = false
-        dumpster.top.physicsBody?.dynamic = false
-        dumpster.physicsBody = nil
-        dumpster.top.physicsBody = nil
+    func handleRideableObstacleCollision(rideableObstacle: RideableObstacle) {
+        rideableObstacle.physicsBody?.dynamic = false
+        rideableObstacle.top.physicsBody?.dynamic = false
+        rideableObstacle.physicsBody = nil
+        rideableObstacle.top.physicsBody = nil
 
         crashAndDie()
     }
 
-    func handleFireHydrantCollision(hydrant: FireHydrant) {
+    func handleObstacleCollision(hydrant: Obstacle) {
         hydrant.physicsBody?.dynamic = false
         hydrant.physicsBody = nil
 

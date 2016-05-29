@@ -16,6 +16,8 @@
 		361038DC1CFB46C100008017 /* Ledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038DB1CFB46C100008017 /* Ledge.swift */; };
 		361038DE1CFB46CD00008017 /* FireHydrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038DD1CFB46CD00008017 /* FireHydrant.swift */; };
 		361038E11CFB4A0A00008017 /* CollisionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038E01CFB4A0A00008017 /* CollisionManager.swift */; };
+		361038E51CFBAC2F00008017 /* Rideable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038E41CFBAC2F00008017 /* Rideable.swift */; };
+		361038E91CFBAED300008017 /* RideableObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038E81CFBAED300008017 /* RideableObstacle.swift */; };
 		364E70C01CF8E54900925C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70BF1CF8E54900925C5B /* AppDelegate.swift */; };
 		364E70C21CF8E54900925C5B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 364E70C11CF8E54900925C5B /* GameScene.sks */; };
 		364E70C41CF8E54900925C5B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70C31CF8E54900925C5B /* GameScene.swift */; };
@@ -48,7 +50,7 @@
 		364E712E1CF9E6B600925C5B /* sfxGameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = 364E71221CF9E6B600925C5B /* sfxGameOver.wav */; };
 		364E71301CF9E6B600925C5B /* sfxOllie.wav in Resources */ = {isa = PBXBuildFile; fileRef = 364E71241CF9E6B600925C5B /* sfxOllie.wav */; };
 		364E71321CF9E6B600925C5B /* sfxSkateOrDie.wav in Resources */ = {isa = PBXBuildFile; fileRef = 364E71261CF9E6B600925C5B /* sfxSkateOrDie.wav */; };
-		364E71351CF9F59200925C5B /* DumpsterTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71341CF9F59200925C5B /* DumpsterTop.swift */; };
+		364E71351CF9F59200925C5B /* RideableTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71341CF9F59200925C5B /* RideableTop.swift */; };
 		364E71371CFA631C00925C5B /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71361CFA631C00925C5B /* Coin.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		361038DB1CFB46C100008017 /* Ledge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ledge.swift; sourceTree = "<group>"; };
 		361038DD1CFB46CD00008017 /* FireHydrant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireHydrant.swift; sourceTree = "<group>"; };
 		361038E01CFB4A0A00008017 /* CollisionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionManager.swift; sourceTree = "<group>"; };
+		361038E41CFBAC2F00008017 /* Rideable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rideable.swift; sourceTree = "<group>"; };
+		361038E81CFBAED300008017 /* RideableObstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideableObstacle.swift; sourceTree = "<group>"; };
 		364E70BC1CF8E54900925C5B /* RetroSkate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetroSkate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		364E70BF1CF8E54900925C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		364E70C11CF8E54900925C5B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -117,7 +121,7 @@
 		364E71221CF9E6B600925C5B /* sfxGameOver.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfxGameOver.wav; sourceTree = "<group>"; };
 		364E71241CF9E6B600925C5B /* sfxOllie.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfxOllie.wav; sourceTree = "<group>"; };
 		364E71261CF9E6B600925C5B /* sfxSkateOrDie.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfxSkateOrDie.wav; sourceTree = "<group>"; };
-		364E71341CF9F59200925C5B /* DumpsterTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DumpsterTop.swift; sourceTree = "<group>"; };
+		364E71341CF9F59200925C5B /* RideableTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideableTop.swift; sourceTree = "<group>"; };
 		364E71361CFA631C00925C5B /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -280,7 +284,7 @@
 				364E71121CF9DB3700925C5B /* FrontBackground.swift */,
 				364E71141CF9DE7700925C5B /* Moveable.swift */,
 				364E71161CF9DF7400925C5B /* Building.swift */,
-				364E71341CF9F59200925C5B /* DumpsterTop.swift */,
+				364E71341CF9F59200925C5B /* RideableTop.swift */,
 				364E71361CFA631C00925C5B /* Coin.swift */,
 				361038CE1CFB138E00008017 /* HeadsUpDisplay.swift */,
 				361038D21CFB354900008017 /* Tree.swift */,
@@ -288,6 +292,8 @@
 				361038D91CFB46B300008017 /* Rail.swift */,
 				361038DB1CFB46C100008017 /* Ledge.swift */,
 				361038DD1CFB46CD00008017 /* FireHydrant.swift */,
+				361038E41CFBAC2F00008017 /* Rideable.swift */,
+				361038E81CFBAED300008017 /* RideableObstacle.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -454,6 +460,7 @@
 				364E70C41CF8E54900925C5B /* GameScene.swift in Sources */,
 				364E71171CF9DF7400925C5B /* Building.swift in Sources */,
 				364E71191CF9E63700925C5B /* AudioManager.swift in Sources */,
+				361038E91CFBAED300008017 /* RideableObstacle.swift in Sources */,
 				364E710F1CF9DB0800925C5B /* FarBackground.swift in Sources */,
 				364E70FA1CF8FD5900925C5B /* PhysicsBody.swift in Sources */,
 				361038CF1CFB138E00008017 /* HeadsUpDisplay.swift in Sources */,
@@ -461,7 +468,7 @@
 				361038DC1CFB46C100008017 /* Ledge.swift in Sources */,
 				364E71371CFA631C00925C5B /* Coin.swift in Sources */,
 				364E70FE1CF9066500925C5B /* Obstacle.swift in Sources */,
-				364E71351CF9F59200925C5B /* DumpsterTop.swift in Sources */,
+				364E71351CF9F59200925C5B /* RideableTop.swift in Sources */,
 				361038E11CFB4A0A00008017 /* CollisionManager.swift in Sources */,
 				364E71011CF908C100925C5B /* SKNodeExtension.swift in Sources */,
 				364E710D1CF9D92400925C5B /* Sidewalk.swift in Sources */,
@@ -474,6 +481,7 @@
 				364E71131CF9DB3700925C5B /* FrontBackground.swift in Sources */,
 				364E71051CF90C6D00925C5B /* Player.swift in Sources */,
 				364E70F51CF8E7CF00925C5B /* TextureManager.swift in Sources */,
+				361038E51CFBAC2F00008017 /* Rideable.swift in Sources */,
 				364E710B1CF9D2AD00925C5B /* ScrollingSceneryManager.swift in Sources */,
 				364E71111CF9DB2600925C5B /* MidBackground.swift in Sources */,
 				361038D31CFB354900008017 /* Tree.swift in Sources */,

@@ -9,6 +9,31 @@
 import SpriteKit
 
 
-class Ledge: Obstacle {
+class Ledge: RideableObstacle {
+
+    convenience init() {
+        self.init(texture: TextureManager.sharedManager.ledgeTexture)
+        xOffset = randomXOffset()
+        yPos = 175
+        topYOffset = 25
+        zPosition = 6
+
+        top = RideableTop(size: CGSize(width: size.width, height: 5))
+    }
+}
+
+// MARK: - Overrides
+
+extension Ledge {
+
+    override func initPhysics() {
+        let collider = SKPhysicsBody(rectangleOfSize: CGSize(width: 5, height: size.height-20), center: CGPoint(x: -size.width/2, y: -5))
+        collider.categoryBitMask = PhysicsBody.Obstacle.rawValue
+        collider.contactTestBitMask = PhysicsBody.Player.rawValue
+
+        physicsBody = collider
+
+        super.initPhysics()
+    }
 
 }
