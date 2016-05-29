@@ -35,12 +35,20 @@ extension Player {
     func jump() {
         guard !isJumping else {
             print("👎 We can't jump, we're already jumping.  Idiot!")
-            position = CHARACTER_POSITION
             return
         }
         physicsBody?.applyImpulse(CGVector(dx: 0, dy: 60))
         isJumping = true
         runAction(SKAction.playSoundFileNamed("sfxOllie.wav", waitForCompletion: false))
+        runAction(SKAction.animateWithTextures(TextureManager.sharedManager.skaterOllieTextures, timePerFrame: 0.04))
+    }
+
+    func hardflip() {
+        guard isJumping else {
+            print("Can't do a hardflip if we're not jumping.  Idiot!")
+            return
+        }
+        runAction(SKAction.animateWithTextures(TextureManager.sharedManager.skaterHardflipTextures, timePerFrame: 0.04))
     }
 
     func playPushAnimation() {

@@ -13,4 +13,5 @@ enum PhysicsBody: UInt32 {
     case Player = 0b1
     case Obstacle = 0b10
     case Rideable = 0b100
+    case Coin = 0b1000
 }

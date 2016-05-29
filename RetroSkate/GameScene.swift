@@ -14,8 +14,6 @@ class GameScene: SKScene {
     let BACKGROUND_X_RESET: CGFloat = -912
 
     var player: Player!
-    var dumpster: Dumpster!
-    var dumpsterTop: DumpsterTop!
 
     var buildings = [SKSpriteNode]()
     var gameOver = false
@@ -33,6 +31,9 @@ class GameScene: SKScene {
 
         setupPhysics()
         playLevelMusic()
+
+
+        randomlyAddCoin()
     }
    
     override func update(currentTime: CFTimeInterval) {
@@ -101,14 +102,10 @@ extension GameScene {
     }
 
     func setupObstacles() {
-        dumpster = Dumpster()
+        let dumpster = Dumpster()
         addChild(dumpster)
+        addChild(dumpster.top)
         dumpster.startMoving()
-
-        dumpsterTop = DumpsterTop()
-        addChild(dumpsterTop)
-        dumpsterTop.position = CGPoint(x: dumpster.position.x, y: dumpster.position.y + 50)
-        dumpsterTop.startMoving()
 
         for i  in 0..<3 {
             let wait = SKAction.waitForDuration(NSTimeInterval(2 * i))
@@ -128,8 +125,10 @@ extension GameScene {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped(_:)))
         tap.allowedPressTypes = [NSNumber(integer: UIPressType.Select.rawValue)]
         view?.addGestureRecognizer(tap)
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swiped(_:)))
+        swipe.direction = .Up
+        view?.addGestureRecognizer(swipe)
     }
-
 
     func playLevelMusic() {
         AudioManager.sharedManager.playLevelMusic()
@@ -156,12 +155,10 @@ extension GameScene : SKPhysicsContactDelegate {
             return
         }
 
-        print("💀 Collision")
-
-        if contact.bodyA.categoryBitMask == PhysicsBody.Obstacle.rawValue {
-            handleCollision()
-        } else if contact.bodyB.categoryBitMask == PhysicsBody.Obstacle.rawValue {
-            handleCollision()
+        if let coin = contact.bodyA.node as? Coin ?? contact.bodyB.node as? Coin {
+            handleCoinCollection(coin)
+        } else if let dumpster = contact.bodyA.node as? Dumpster ?? contact.bodyB.node as? Dumpster {
+            handleObstacleCollision(dumpster)
         }
     }
 
@@ -175,7 +172,15 @@ extension GameScene {
         guard !gameOver else {
             return
         }
+
         player.jump()
+    }
+
+    func swiped(gesture: UISwipeGestureRecognizer) {
+        guard !gameOver else {
+            return
+        }
+        player.hardflip()
     }
 
 }
@@ -185,11 +190,35 @@ extension GameScene {
 
 private extension GameScene {
 
-    func handleCollision() {
+    func randomlyAddCoin() {
+        guard !gameOver else {
+            return
+        }
+
+        let coin = Coin()
+        coin.randomizePosition()
+        addChild(coin)
+        coin.startMoving()
+
+        let randomWait = SKAction.waitForDuration(NSTimeInterval(arc4random_uniform(19) + 1))
+        let action = SKAction.runBlock {
+            self.randomlyAddCoin()
+        }
+        runAction(SKAction.sequence([randomWait, action]))
+    }
+
+    func handleCoinCollection(coin: SKNode) {
+        GameManager.sharedManager.score += 1
+        coin.removeAllActions()
+        coin.removeFromParent()
+        runAction(SKAction.playSoundFileNamed("sfxButtonPress.wav", waitForCompletion: false))
+    }
+
+    func handleObstacleCollision(dumpster: Dumpster) {
         dumpster.physicsBody?.dynamic = false
-        dumpsterTop.physicsBody?.dynamic = false
+        dumpster.top.physicsBody?.dynamic = false
         dumpster.physicsBody = nil
-        dumpsterTop.physicsBody = nil
+        dumpster.top.physicsBody = nil
         gameOver = true
 
         for node in children {

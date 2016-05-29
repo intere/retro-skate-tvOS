@@ -40,6 +40,7 @@
 		364E71301CF9E6B600925C5B /* sfxOllie.wav in Resources */ = {isa = PBXBuildFile; fileRef = 364E71241CF9E6B600925C5B /* sfxOllie.wav */; };
 		364E71321CF9E6B600925C5B /* sfxSkateOrDie.wav in Resources */ = {isa = PBXBuildFile; fileRef = 364E71261CF9E6B600925C5B /* sfxSkateOrDie.wav */; };
 		364E71351CF9F59200925C5B /* DumpsterTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71341CF9F59200925C5B /* DumpsterTop.swift */; };
+		364E71371CFA631C00925C5B /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E71361CFA631C00925C5B /* Coin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		364E71241CF9E6B600925C5B /* sfxOllie.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfxOllie.wav; sourceTree = "<group>"; };
 		364E71261CF9E6B600925C5B /* sfxSkateOrDie.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfxSkateOrDie.wav; sourceTree = "<group>"; };
 		364E71341CF9F59200925C5B /* DumpsterTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DumpsterTop.swift; sourceTree = "<group>"; };
+		364E71361CFA631C00925C5B /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 				364E71141CF9DE7700925C5B /* Moveable.swift */,
 				364E71161CF9DF7400925C5B /* Building.swift */,
 				364E71341CF9F59200925C5B /* DumpsterTop.swift */,
+				364E71361CFA631C00925C5B /* Coin.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				364E710F1CF9DB0800925C5B /* FarBackground.swift in Sources */,
 				364E70FA1CF8FD5900925C5B /* PhysicsBody.swift in Sources */,
 				364E71151CF9DE7700925C5B /* Moveable.swift in Sources */,
+				364E71371CFA631C00925C5B /* Coin.swift in Sources */,
 				364E70FE1CF9066500925C5B /* Obstacle.swift in Sources */,
 				364E71351CF9F59200925C5B /* DumpsterTop.swift in Sources */,
 				364E71011CF908C100925C5B /* SKNodeExtension.swift in Sources */,
@@ -654,6 +658,7 @@
 				364E70E91CF8E54A00925C5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		364E70EA1CF8E54A00925C5B /* Build configuration list for PBXNativeTarget "RetroSkateTests" */ = {
 			isa = XCConfigurationList;
@@ -662,6 +667,7 @@
 				364E70EC1CF8E54A00925C5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		364E70ED1CF8E54A00925C5B /* Build configuration list for PBXNativeTarget "RetroSkateUITests" */ = {
 			isa = XCConfigurationList;
@@ -670,6 +676,7 @@
 				364E70EF1CF8E54A00925C5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

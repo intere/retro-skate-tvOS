@@ -44,6 +44,10 @@ extension TextureManagerTest {
     func testGetObstacles() {
         XCTAssertNotEqual(ERROR_SIZE, TextureManager.sharedManager.dumpsterTexture.size())
     }
+
+    func testGetCoinTexture() {
+        XCTAssertNotEqual(ERROR_SIZE, TextureManager.sharedManager.coinTexture.size())
+    }
 }
 
 // MARK: - Skater Animation Textures
@@ -54,6 +58,30 @@ extension TextureManagerTest {
         XCTAssertNotNil(TextureManager.sharedManager.skaterPushTextures)
         XCTAssertEqual(12, TextureManager.sharedManager.skaterPushTextures.count)
         for texture in TextureManager.sharedManager.skaterPushTextures {
+            XCTAssertNotEqual(ERROR_SIZE, texture.size())
+        }
+    }
+
+    func testGetSkaterCrashAnimation() {
+        XCTAssertNotNil(TextureManager.sharedManager.skaterCrashTextures)
+        XCTAssertEqual(12, TextureManager.sharedManager.skaterPushTextures.count)
+        for texture in TextureManager.sharedManager.skaterPushTextures {
+            XCTAssertNotEqual(ERROR_SIZE, texture.size())
+        }
+    }
+
+    func testGetSkaterHardflipAnimation() {
+        XCTAssertNotNil(TextureManager.sharedManager.skaterHardflipTextures)
+        XCTAssertEqual(12, TextureManager.sharedManager.skaterHardflipTextures.count)
+        for texture in TextureManager.sharedManager.skaterHardflipTextures {
+            XCTAssertNotEqual(ERROR_SIZE, texture.size())
+        }
+    }
+
+    func testGetSkaterOllieAnimation() {
+        XCTAssertNotNil(TextureManager.sharedManager.skaterOllieTextures)
+        XCTAssertEqual(10, TextureManager.sharedManager.skaterOllieTextures.count)
+        for texture in TextureManager.sharedManager.skaterOllieTextures {
             XCTAssertNotEqual(ERROR_SIZE, texture.size())
         }
     }

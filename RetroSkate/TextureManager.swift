@@ -25,9 +25,14 @@ class TextureManager {
     // Obstacles
     var dumpsterTexture = SKTexture(imageNamed: "dumpster")
 
+    // Other stuff
+    var coinTexture = SKTexture(imageNamed: "coin")
+
     // Animations
     var skaterPushTextures = TextureManager.loadTextures("push", startIndex: 0, endIndex: 11)
     var skaterCrashTextures = TextureManager.loadTextures("crash", startIndex: 0, endIndex: 8)
+    var skaterHardflipTextures = TextureManager.loadTextures("hardflip", startIndex: 0, endIndex: 11)
+    var skaterOllieTextures = TextureManager.loadTextures("ollie", startIndex: 0, endIndex: 9)    
 
     // Buildings
     private var buildingTextures = TextureManager.loadTextures("building", startIndex: 0, endIndex: 7)

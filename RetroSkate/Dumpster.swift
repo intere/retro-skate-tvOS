@@ -10,10 +10,13 @@ import SpriteKit
 
 class Dumpster: Obstacle {
 
+    var top: DumpsterTop!
+
     convenience init() {
         self.init(texture: TextureManager.sharedManager.dumpsterTexture)
         yPos = 180
         zPosition = 6
+        top = DumpsterTop()
     }
 
     override func initPhysics() {
@@ -23,7 +26,23 @@ class Dumpster: Obstacle {
 
         physicsBody = frontCollider
 
-
         super.initPhysics()
     }
+
+}
+
+// MARK: - Overrides
+
+extension Dumpster {
+
+    override func update() {
+        super.update()
+        top.position = CGPoint(x: position.x, y: position.y + 40)
+    }
+
+    override func startMoving() {
+        super.startMoving()
+        top.startMoving()
+    }
+
 }

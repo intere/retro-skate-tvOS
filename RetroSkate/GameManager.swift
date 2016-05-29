@@ -13,4 +13,8 @@ class GameManager {
 
     let GROUND_SPEED: CGFloat = -8.5
     let GROUND_X_RESET: CGFloat = -150
+
+    var score = 0
+    var distance = 0
+    
 }
