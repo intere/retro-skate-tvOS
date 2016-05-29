@@ -15,9 +15,10 @@ class GameScene: SKScene {
 
     var player: Player!
 
-    var playerDied = false
-
     override func didMoveToView(view: SKView) {
+        GameManager.sharedManager.playerDead = false
+        CollisionManager.sharedManager.scene = self
+
         setupBackground()
         setupGround()
 
@@ -118,6 +119,10 @@ extension GameScene {
         addChild(dumpster.top)
         dumpster.startMoving()
 
+        let hydrant = FireHydrant()
+        addChild(hydrant)
+        hydrant.startMoving()
+
         waitAndRunBlock(5, repititions: 3) {
             let building = Building()
             self.addChild(building)
@@ -144,7 +149,7 @@ extension GameScene {
             let wait = Double(arc4random_uniform(UInt32(maxWait*1000))) / Double(1000)
             let waitAction = SKAction.waitForDuration(NSTimeInterval(i+1) * wait)
             runAction(waitAction) {
-                guard !self.playerDied else {
+                guard GameManager.sharedManager.isPlayerAlive() else {
                     return
                 }
                 block()
@@ -179,18 +184,7 @@ extension GameScene {
 extension GameScene : SKPhysicsContactDelegate {
 
     func didBeginContact(contact: SKPhysicsContact) {
-        guard !playerDied else {
-            return
-        }
-        guard contact.bodyA.categoryBitMask != PhysicsBody.Rideable.rawValue && contact.bodyB.categoryBitMask != PhysicsBody.Rideable.rawValue else {
-            return
-        }
-
-        if let coin = contact.bodyA.node as? Coin ?? contact.bodyB.node as? Coin {
-            handleCoinCollection(coin)
-        } else if let dumpster = contact.bodyA.node as? Dumpster ?? contact.bodyB.node as? Dumpster {
-            handleObstacleCollision(dumpster)
-        }
+        CollisionManager.sharedManager.handleCollision(contact)
     }
 
 }
@@ -200,7 +194,7 @@ extension GameScene : SKPhysicsContactDelegate {
 extension GameScene {
 
     func tapped(gesture: UITapGestureRecognizer) {
-        guard !playerDied else {
+        guard GameManager.sharedManager.isPlayerAlive() else {
             return
         }
 
@@ -208,7 +202,7 @@ extension GameScene {
     }
 
     func swiped(gesture: UISwipeGestureRecognizer) {
-        guard !playerDied else {
+        guard GameManager.sharedManager.isPlayerAlive() else {
             return
         }
         player.hardflip()
@@ -222,7 +216,7 @@ extension GameScene {
 private extension GameScene {
 
     func randomlySpawnCoin() {
-        guard !playerDied else {
+        guard GameManager.sharedManager.isPlayerAlive() else {
             return
         }
 
@@ -235,53 +229,13 @@ private extension GameScene {
     }
 
     func spawnCoin() {
-        guard !playerDied else {
+        guard GameManager.sharedManager.isPlayerAlive() else {
             return
         }
         let coin = Coin()
         coin.randomizePosition()
         addChild(coin)
         coin.startMoving()
-    }
-
-    func handleCoinCollection(coin: SKNode) {
-        GameManager.sharedManager.score += 1
-        coin.removeAllActions()
-        coin.removeFromParent()
-        runAction(SKAction.playSoundFileNamed("sfxButtonPress.wav", waitForCompletion: false))
-    }
-
-    func handleObstacleCollision(dumpster: Dumpster) {
-        dumpster.physicsBody?.dynamic = false
-        dumpster.top.physicsBody?.dynamic = false
-        dumpster.physicsBody = nil
-        dumpster.top.physicsBody = nil
-        playerDied = true
-        GameManager.sharedManager.lives -= 1
-
-        for node in children {
-            node.removeAllActions()
-        }
-
-        player.playCrashAnimation()
-        stopPlayLevelMusic()
-
-        guard GameManager.sharedManager.lives > 0 else {
-            // TODO: Handle Game Over
-            runAction(SKAction.waitForDuration(1)) {
-                self.playGameOverSound()
-            }
-            print("GAME OVER!!!")
-            return
-        }
-
-        runAction(SKAction.sequence([SKAction.waitForDuration(5), SKAction.runBlock {
-            guard let scene = GameScene(fileNamed: "GameScene") else {
-                return
-            }
-            scene.scaleMode = .AspectFill
-            self.view!.presentScene(scene, transition: SKTransition.crossFadeWithDuration(1))
-        }]))
     }
 
 }

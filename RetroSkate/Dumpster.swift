@@ -14,6 +14,7 @@ class Dumpster: Obstacle {
 
     convenience init() {
         self.init(texture: TextureManager.sharedManager.dumpsterTexture)
+        xOffset = randomXOffset()
         yPos = 180
         zPosition = 6
         top = DumpsterTop()
@@ -31,9 +32,7 @@ extension Dumpster {
     }
 
     override func didExceedBounds() {
-
         xOffset = randomXOffset()
-
         super.didExceedBounds()
     }
 

@@ -19,12 +19,16 @@ class GameManager {
     var distance = 0
     var lives = GameManager.START_LIVES
     var startTime = NSDate()
-    
+    var playerDead = true
 }
 
 // MARK: - API
 
 extension GameManager {
+
+    func isPlayerAlive() -> Bool {
+        return !playerDead
+    }
 
     func resetGame() {
         score = 0

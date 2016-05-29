@@ -12,30 +12,33 @@ class TextureManager {
     static let sharedManager = TextureManager()
 
     // Background
-    var frontBackgroundTexture = SKTexture(imageNamed: "bg1")
-    var midBackgroundTexture = SKTexture(imageNamed: "bg2")
-    var farBackgroundTexture = SKTexture(imageNamed: "bg3")
+    let frontBackgroundTexture = SKTexture(imageNamed: "bg1")
+    let midBackgroundTexture = SKTexture(imageNamed: "bg2")
+    let farBackgroundTexture = SKTexture(imageNamed: "bg3")
 
     // Asphalt
-    var asphaltTexture = SKTexture(imageNamed: "asphalt")
+    let asphaltTexture = SKTexture(imageNamed: "asphalt")
 
     // Sidewalk
-    var sidewalkTexture = SKTexture(imageNamed: "sidewalk")
+    let sidewalkTexture = SKTexture(imageNamed: "sidewalk")
 
     // Obstacles
-    var dumpsterTexture = SKTexture(imageNamed: "dumpster")
+    let dumpsterTexture = SKTexture(imageNamed: "dumpster")
+    let fireHydrantTexture = SKTexture(imageNamed: "fire_hydrant")
+    let ledgeTexture = SKTexture(imageNamed: "ledge")
+    let railTexture = SKTexture(imageNamed: "rail")
 
     // Other stuff
-    var coinTexture = SKTexture(imageNamed: "coin")
+    let coinTexture = SKTexture(imageNamed: "coin")
 
     // Animations
-    var skaterPushTextures = TextureManager.loadTextures("push", startIndex: 0, endIndex: 11)
-    var skaterCrashTextures = TextureManager.loadTextures("crash", startIndex: 0, endIndex: 8)
-    var skaterHardflipTextures = TextureManager.loadTextures("hardflip", startIndex: 0, endIndex: 11)
-    var skaterOllieTextures = TextureManager.loadTextures("ollie", startIndex: 0, endIndex: 9)    
+    let skaterPushTextures = TextureManager.loadTextures("push", startIndex: 0, endIndex: 11)
+    let skaterCrashTextures = TextureManager.loadTextures("crash", startIndex: 0, endIndex: 8)
+    let skaterHardflipTextures = TextureManager.loadTextures("hardflip", startIndex: 0, endIndex: 11)
+    let skaterOllieTextures = TextureManager.loadTextures("ollie", startIndex: 0, endIndex: 9)
 
     // Buildings
-    private var buildingTextures = TextureManager.loadTextures("building", startIndex: 0, endIndex: 7)
+    private let buildingTextures = TextureManager.loadTextures("building", startIndex: 0, endIndex: 7)
 
     var randomBuildingTexture: SKTexture {
         let index = Int(arc4random_uniform(UInt32(buildingTextures.count)))
@@ -43,7 +46,7 @@ class TextureManager {
     }
 
     // Trees
-    private var treeTextures = TextureManager.loadTextures("tree", startIndex: 0, endIndex: 1)
+    private let treeTextures = TextureManager.loadTextures("tree", startIndex: 0, endIndex: 1)
 
     var randomTreeTexture: SKTexture {
         let index = Int(arc4random_uniform(UInt32(treeTextures.count)))
@@ -51,7 +54,7 @@ class TextureManager {
     }
 
     // Clouds
-    private var cloudTextures = TextureManager.loadTextures("cloud", startIndex: 0, endIndex: 1)
+    private let cloudTextures = TextureManager.loadTextures("cloud", startIndex: 0, endIndex: 1)
 
     var randomCloudTexture: SKTexture {
         let index = Int(arc4random_uniform(UInt32(cloudTextures.count)))

@@ -12,6 +12,10 @@
 		361038D31CFB354900008017 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038D21CFB354900008017 /* Tree.swift */; };
 		361038D51CFB392900008017 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038D41CFB392900008017 /* Cloud.swift */; };
 		361038D81CFB3A8300008017 /* CloudTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038D71CFB3A8300008017 /* CloudTest.swift */; };
+		361038DA1CFB46B300008017 /* Rail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038D91CFB46B300008017 /* Rail.swift */; };
+		361038DC1CFB46C100008017 /* Ledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038DB1CFB46C100008017 /* Ledge.swift */; };
+		361038DE1CFB46CD00008017 /* FireHydrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038DD1CFB46CD00008017 /* FireHydrant.swift */; };
+		361038E11CFB4A0A00008017 /* CollisionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038E01CFB4A0A00008017 /* CollisionManager.swift */; };
 		364E70C01CF8E54900925C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70BF1CF8E54900925C5B /* AppDelegate.swift */; };
 		364E70C21CF8E54900925C5B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 364E70C11CF8E54900925C5B /* GameScene.sks */; };
 		364E70C41CF8E54900925C5B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70C31CF8E54900925C5B /* GameScene.swift */; };
@@ -71,6 +75,10 @@
 		361038D21CFB354900008017 /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		361038D41CFB392900008017 /* Cloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		361038D71CFB3A8300008017 /* CloudTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudTest.swift; sourceTree = "<group>"; };
+		361038D91CFB46B300008017 /* Rail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rail.swift; sourceTree = "<group>"; };
+		361038DB1CFB46C100008017 /* Ledge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ledge.swift; sourceTree = "<group>"; };
+		361038DD1CFB46CD00008017 /* FireHydrant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireHydrant.swift; sourceTree = "<group>"; };
+		361038E01CFB4A0A00008017 /* CollisionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionManager.swift; sourceTree = "<group>"; };
 		364E70BC1CF8E54900925C5B /* RetroSkate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetroSkate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		364E70BF1CF8E54900925C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		364E70C11CF8E54900925C5B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -238,6 +246,7 @@
 				364E710A1CF9D2AD00925C5B /* ScrollingSceneryManager.swift */,
 				364E71181CF9E63700925C5B /* AudioManager.swift */,
 				361038D01CFB329A00008017 /* DistanceManager.swift */,
+				361038E01CFB4A0A00008017 /* CollisionManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -276,6 +285,9 @@
 				361038CE1CFB138E00008017 /* HeadsUpDisplay.swift */,
 				361038D21CFB354900008017 /* Tree.swift */,
 				361038D41CFB392900008017 /* Cloud.swift */,
+				361038D91CFB46B300008017 /* Rail.swift */,
+				361038DB1CFB46C100008017 /* Ledge.swift */,
+				361038DD1CFB46CD00008017 /* FireHydrant.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -446,14 +458,17 @@
 				364E70FA1CF8FD5900925C5B /* PhysicsBody.swift in Sources */,
 				361038CF1CFB138E00008017 /* HeadsUpDisplay.swift in Sources */,
 				364E71151CF9DE7700925C5B /* Moveable.swift in Sources */,
+				361038DC1CFB46C100008017 /* Ledge.swift in Sources */,
 				364E71371CFA631C00925C5B /* Coin.swift in Sources */,
 				364E70FE1CF9066500925C5B /* Obstacle.swift in Sources */,
 				364E71351CF9F59200925C5B /* DumpsterTop.swift in Sources */,
+				361038E11CFB4A0A00008017 /* CollisionManager.swift in Sources */,
 				364E71011CF908C100925C5B /* SKNodeExtension.swift in Sources */,
 				364E710D1CF9D92400925C5B /* Sidewalk.swift in Sources */,
 				364E70C61CF8E54900925C5B /* GameViewController.swift in Sources */,
 				361038D11CFB329A00008017 /* DistanceManager.swift in Sources */,
 				364E71031CF9095000925C5B /* Dumpster.swift in Sources */,
+				361038DE1CFB46CD00008017 /* FireHydrant.swift in Sources */,
 				361038D51CFB392900008017 /* Cloud.swift in Sources */,
 				364E70C01CF8E54900925C5B /* AppDelegate.swift in Sources */,
 				364E71131CF9DB3700925C5B /* FrontBackground.swift in Sources */,
@@ -462,6 +477,7 @@
 				364E710B1CF9D2AD00925C5B /* ScrollingSceneryManager.swift in Sources */,
 				364E71111CF9DB2600925C5B /* MidBackground.swift in Sources */,
 				361038D31CFB354900008017 /* Tree.swift in Sources */,
+				361038DA1CFB46B300008017 /* Rail.swift in Sources */,
 				364E71071CF90FC500925C5B /* GameManager.swift in Sources */,
 				364E71091CF9CF0000925C5B /* Asphalt.swift in Sources */,
 			);

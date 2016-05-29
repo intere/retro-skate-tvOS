@@ -25,7 +25,7 @@ class Moveable: SKSpriteNode {
 extension Moveable {
 
     func startMoving() {
-        position = CGPoint(x: Moveable.START_X_POSITION, y: yPos)
+        position = CGPoint(x: Moveable.START_X_POSITION + xOffset, y: yPos)
 
         moveAction = SKAction.moveByX(GameManager.sharedManager.GROUND_SPEED, y: 0, duration: 0.02)
         moveForever = SKAction.repeatActionForever(moveAction)
@@ -61,7 +61,7 @@ extension Moveable {
     }
 
     func randomXOffset() -> CGFloat {
-        return randomFloat(0, max: 500)
+        return randomFloat(-500, max: 500)
     }
 
 }
