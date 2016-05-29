@@ -16,7 +16,7 @@ class GameScene: SKScene {
     var player: Player!
 
     var buildings = [SKSpriteNode]()
-    var gameOver = false
+    var playerDied = false
 
     override func didMoveToView(view: SKView) {
         setupBackground()
@@ -30,12 +30,17 @@ class GameScene: SKScene {
         setupObstacles()
 
         setupPhysics()
-        playLevelMusic()
+//        playLevelMusic()
 
-
-        randomlyAddCoin()
+        randomlySpawnCoin()
     }
-   
+
+}
+
+// MARK: - Game Loop
+
+extension GameScene {
+
     override func update(currentTime: CFTimeInterval) {
 
         ScrollingSceneryManager.sharedManager.update()
@@ -43,6 +48,8 @@ class GameScene: SKScene {
         for child in children {
             child.update()
         }
+
+        DistanceManager.sharedManager.update()
     }
 
 }
@@ -79,19 +86,24 @@ extension GameScene {
         ScrollingSceneryManager.sharedManager.addScrollingScenery(frontBG, startPosition: CGPoint(x: 0, y: 400), resetXPosition: BACKGROUND_X_RESET, moveSpeed: -2)
         ScrollingSceneryManager.sharedManager.addScrollingScenery(midBG, startPosition: CGPoint(x: 0, y: 450), resetXPosition: BACKGROUND_X_RESET, moveSpeed: -1)
         ScrollingSceneryManager.sharedManager.addScrollingScenery(farBG, startPosition: CGPoint(x: 0, y: 500), resetXPosition: BACKGROUND_X_RESET, moveSpeed: -0.5)
+
+        let hud = HeadsUpDisplay()
+        hud.position = CGPoint(x: 500, y: 600)
+        addChild(hud)
     }
 
     func setupGround() {
-        var asphaltPieces = [SKSpriteNode]()
+        var asphaltPieces = [Asphalt]()
 
         for _ in 0..<ASP_PIECES {
             let asphalt = Asphalt()
             asphaltPieces.append(asphalt)
             addChild(asphalt)
         }
-        ScrollingSceneryManager.sharedManager.addScrollingScenery(asphaltPieces, startPosition: CGPoint(x: 0, y: 145), resetXPosition: GameManager.sharedManager.GROUND_X_RESET, moveSpeed: GameManager.sharedManager.GROUND_SPEED)
+        DistanceManager.sharedManager.node = asphaltPieces.first!
+        ScrollingSceneryManager.sharedManager.addScrollingScenery(asphaltPieces, startPosition: CGPoint(x: 0, y: GameManager.sharedManager.ASPHALT_X_RESET), resetXPosition: GameManager.sharedManager.GROUND_X_RESET, moveSpeed: GameManager.sharedManager.GROUND_SPEED)
 
-        var sidewalkPieces = [SKSpriteNode]()
+        var sidewalkPieces = [Sidewalk]()
 
         for _ in 0..<SIDEWALK_PIECES {
             let sidewalk = Sidewalk()
@@ -110,7 +122,7 @@ extension GameScene {
         for i  in 0..<3 {
             let wait = SKAction.waitForDuration(NSTimeInterval(2 * i))
             runAction(wait) {
-                guard !self.gameOver else {
+                guard !self.playerDied else {
                     return
                 }
                 let building = Building()
@@ -148,7 +160,7 @@ extension GameScene {
 extension GameScene : SKPhysicsContactDelegate {
 
     func didBeginContact(contact: SKPhysicsContact) {
-        guard !gameOver else {
+        guard !playerDied else {
             return
         }
         guard contact.bodyA.categoryBitMask != PhysicsBody.Rideable.rawValue && contact.bodyB.categoryBitMask != PhysicsBody.Rideable.rawValue else {
@@ -169,7 +181,7 @@ extension GameScene : SKPhysicsContactDelegate {
 extension GameScene {
 
     func tapped(gesture: UITapGestureRecognizer) {
-        guard !gameOver else {
+        guard !playerDied else {
             return
         }
 
@@ -177,7 +189,7 @@ extension GameScene {
     }
 
     func swiped(gesture: UISwipeGestureRecognizer) {
-        guard !gameOver else {
+        guard !playerDied else {
             return
         }
         player.hardflip()
@@ -190,21 +202,27 @@ extension GameScene {
 
 private extension GameScene {
 
-    func randomlyAddCoin() {
-        guard !gameOver else {
+    func randomlySpawnCoin() {
+        guard !playerDied else {
             return
         }
 
+        let randomWait = SKAction.waitForDuration(NSTimeInterval(arc4random_uniform(5) + 1))
+        let action = SKAction.runBlock {
+            self.spawnCoin()
+            self.randomlySpawnCoin()
+        }
+        runAction(SKAction.sequence([randomWait, action]))
+    }
+
+    func spawnCoin() {
+        guard !playerDied else {
+            return
+        }
         let coin = Coin()
         coin.randomizePosition()
         addChild(coin)
         coin.startMoving()
-
-        let randomWait = SKAction.waitForDuration(NSTimeInterval(arc4random_uniform(19) + 1))
-        let action = SKAction.runBlock {
-            self.randomlyAddCoin()
-        }
-        runAction(SKAction.sequence([randomWait, action]))
     }
 
     func handleCoinCollection(coin: SKNode) {
@@ -219,7 +237,8 @@ private extension GameScene {
         dumpster.top.physicsBody?.dynamic = false
         dumpster.physicsBody = nil
         dumpster.top.physicsBody = nil
-        gameOver = true
+        playerDied = true
+        GameManager.sharedManager.lives -= 1
 
         for node in children {
             node.removeAllActions()
@@ -228,6 +247,12 @@ private extension GameScene {
         player.playCrashAnimation()
         stopPlayLevelMusic()
         playGameOverSound()
+
+        guard GameManager.sharedManager.lives > 0 else {
+            // TODO: Handle Game Over
+            print("GAME OVER!!!")
+            return
+        }
 
         runAction(SKAction.sequence([SKAction.waitForDuration(5), SKAction.runBlock {
             guard let scene = GameScene(fileNamed: "GameScene") else {

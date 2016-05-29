@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		361038CF1CFB138E00008017 /* HeadsUpDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038CE1CFB138E00008017 /* HeadsUpDisplay.swift */; };
+		361038D11CFB329A00008017 /* DistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038D01CFB329A00008017 /* DistanceManager.swift */; };
 		364E70C01CF8E54900925C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70BF1CF8E54900925C5B /* AppDelegate.swift */; };
 		364E70C21CF8E54900925C5B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 364E70C11CF8E54900925C5B /* GameScene.sks */; };
 		364E70C41CF8E54900925C5B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70C31CF8E54900925C5B /* GameScene.swift */; };
@@ -61,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		361038CE1CFB138E00008017 /* HeadsUpDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadsUpDisplay.swift; sourceTree = "<group>"; };
+		361038D01CFB329A00008017 /* DistanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceManager.swift; sourceTree = "<group>"; };
 		364E70BC1CF8E54900925C5B /* RetroSkate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetroSkate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		364E70BF1CF8E54900925C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		364E70C11CF8E54900925C5B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				364E71061CF90FC500925C5B /* GameManager.swift */,
 				364E710A1CF9D2AD00925C5B /* ScrollingSceneryManager.swift */,
 				364E71181CF9E63700925C5B /* AudioManager.swift */,
+				361038D01CFB329A00008017 /* DistanceManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 				364E71161CF9DF7400925C5B /* Building.swift */,
 				364E71341CF9F59200925C5B /* DumpsterTop.swift */,
 				364E71361CFA631C00925C5B /* Coin.swift */,
+				361038CE1CFB138E00008017 /* HeadsUpDisplay.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -421,6 +427,7 @@
 				364E71191CF9E63700925C5B /* AudioManager.swift in Sources */,
 				364E710F1CF9DB0800925C5B /* FarBackground.swift in Sources */,
 				364E70FA1CF8FD5900925C5B /* PhysicsBody.swift in Sources */,
+				361038CF1CFB138E00008017 /* HeadsUpDisplay.swift in Sources */,
 				364E71151CF9DE7700925C5B /* Moveable.swift in Sources */,
 				364E71371CFA631C00925C5B /* Coin.swift in Sources */,
 				364E70FE1CF9066500925C5B /* Obstacle.swift in Sources */,
@@ -428,6 +435,7 @@
 				364E71011CF908C100925C5B /* SKNodeExtension.swift in Sources */,
 				364E710D1CF9D92400925C5B /* Sidewalk.swift in Sources */,
 				364E70C61CF8E54900925C5B /* GameViewController.swift in Sources */,
+				361038D11CFB329A00008017 /* DistanceManager.swift in Sources */,
 				364E71031CF9095000925C5B /* Dumpster.swift in Sources */,
 				364E70C01CF8E54900925C5B /* AppDelegate.swift in Sources */,
 				364E71131CF9DB3700925C5B /* FrontBackground.swift in Sources */,

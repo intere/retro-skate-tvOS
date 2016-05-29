@@ -16,7 +16,6 @@ class ScrollingSceneryManager {
 
     private var sceneryList = [SceneryType]()
 
-
 }
 
 // MARK: - Public Interface
@@ -35,6 +34,7 @@ extension ScrollingSceneryManager {
 }
 
 // MARK: - Helpers
+
 private extension ScrollingSceneryManager {
 
     func shiftSceneryTiles() {

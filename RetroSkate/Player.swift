@@ -84,6 +84,7 @@ extension Player {
         physicsBody?.mass = 0.1
         physicsBody?.dynamic = true
         physicsBody?.categoryBitMask = PhysicsBody.Player.rawValue
-        physicsBody?.contactTestBitMask = PhysicsBody.Obstacle.rawValue
+        physicsBody?.collisionBitMask = PhysicsBody.Obstacle.rawValue | PhysicsBody.Rideable.rawValue
+        physicsBody?.contactTestBitMask = PhysicsBody.Coin.rawValue
     }
 }

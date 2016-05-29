@@ -9,6 +9,7 @@
 import SpriteKit
 
 class Asphalt: SKSpriteNode {
+
     convenience init() {
         self.init(texture: TextureManager.sharedManager.asphaltTexture)
         setupPhysics()

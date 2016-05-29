@@ -27,6 +27,7 @@ extension Obstacle {
         physicsBody?.affectedByGravity = false
         physicsBody?.restitution = 0
         physicsBody?.friction = 0
+        physicsBody?.mass = 0
     }
 
 }
