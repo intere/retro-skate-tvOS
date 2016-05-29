@@ -15,7 +15,6 @@ class GameScene: SKScene {
 
     var player: Player!
 
-    var buildings = [SKSpriteNode]()
     var playerDied = false
 
     override func didMoveToView(view: SKView) {
@@ -119,16 +118,36 @@ extension GameScene {
         addChild(dumpster.top)
         dumpster.startMoving()
 
-        for i  in 0..<3 {
-            let wait = SKAction.waitForDuration(NSTimeInterval(2 * i))
-            runAction(wait) {
+        waitAndRunBlock(5, repititions: 3) {
+            let building = Building()
+            self.addChild(building)
+            building.startMoving()
+        }
+
+        waitAndRunBlock(3, repititions: 2) {
+            let tree = Tree()
+            self.addChild(tree)
+            tree.startMoving()
+        }
+
+        waitAndRunBlock(3, repititions: 3) {
+            let cloud = Cloud()
+            self.addChild(cloud)
+            cloud.startMoving()
+        }
+    }
+
+    typealias Block = () -> Void
+
+    func waitAndRunBlock(maxWait: NSTimeInterval, repititions: Int, block: Block ) {
+        for i in 0..<repititions {
+            let wait = Double(arc4random_uniform(UInt32(maxWait*1000))) / Double(1000)
+            let waitAction = SKAction.waitForDuration(NSTimeInterval(i+1) * wait)
+            runAction(waitAction) {
                 guard !self.playerDied else {
                     return
                 }
-                let building = Building()
-                self.buildings.append(building)
-                self.addChild(building)
-                building.startMoving()
+                block()
             }
         }
     }
@@ -246,10 +265,12 @@ private extension GameScene {
 
         player.playCrashAnimation()
         stopPlayLevelMusic()
-        playGameOverSound()
 
         guard GameManager.sharedManager.lives > 0 else {
             // TODO: Handle Game Over
+            runAction(SKAction.waitForDuration(1)) {
+                self.playGameOverSound()
+            }
             print("GAME OVER!!!")
             return
         }

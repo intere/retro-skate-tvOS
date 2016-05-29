@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		361038CF1CFB138E00008017 /* HeadsUpDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038CE1CFB138E00008017 /* HeadsUpDisplay.swift */; };
 		361038D11CFB329A00008017 /* DistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038D01CFB329A00008017 /* DistanceManager.swift */; };
+		361038D31CFB354900008017 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038D21CFB354900008017 /* Tree.swift */; };
+		361038D51CFB392900008017 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038D41CFB392900008017 /* Cloud.swift */; };
+		361038D81CFB3A8300008017 /* CloudTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038D71CFB3A8300008017 /* CloudTest.swift */; };
 		364E70C01CF8E54900925C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70BF1CF8E54900925C5B /* AppDelegate.swift */; };
 		364E70C21CF8E54900925C5B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 364E70C11CF8E54900925C5B /* GameScene.sks */; };
 		364E70C41CF8E54900925C5B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70C31CF8E54900925C5B /* GameScene.swift */; };
@@ -65,6 +68,9 @@
 /* Begin PBXFileReference section */
 		361038CE1CFB138E00008017 /* HeadsUpDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadsUpDisplay.swift; sourceTree = "<group>"; };
 		361038D01CFB329A00008017 /* DistanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceManager.swift; sourceTree = "<group>"; };
+		361038D21CFB354900008017 /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		361038D41CFB392900008017 /* Cloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
+		361038D71CFB3A8300008017 /* CloudTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudTest.swift; sourceTree = "<group>"; };
 		364E70BC1CF8E54900925C5B /* RetroSkate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetroSkate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		364E70BF1CF8E54900925C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		364E70C11CF8E54900925C5B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -132,6 +138,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		361038D61CFB3A6F00008017 /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				361038D71CFB3A8300008017 /* CloudTest.swift */,
+			);
+			name = Sprites;
+			sourceTree = "<group>";
+		};
 		364E70B31CF8E54900925C5B = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +184,7 @@
 		364E70D61CF8E54A00925C5B /* RetroSkateTests */ = {
 			isa = PBXGroup;
 			children = (
+				361038D61CFB3A6F00008017 /* Sprites */,
 				364E70F61CF8E86500925C5B /* Managers */,
 				364E70D71CF8E54A00925C5B /* RetroSkateTests.swift */,
 				364E70D91CF8E54A00925C5B /* Info.plist */,
@@ -259,6 +274,8 @@
 				364E71341CF9F59200925C5B /* DumpsterTop.swift */,
 				364E71361CFA631C00925C5B /* Coin.swift */,
 				361038CE1CFB138E00008017 /* HeadsUpDisplay.swift */,
+				361038D21CFB354900008017 /* Tree.swift */,
+				361038D41CFB392900008017 /* Cloud.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -437,12 +454,14 @@
 				364E70C61CF8E54900925C5B /* GameViewController.swift in Sources */,
 				361038D11CFB329A00008017 /* DistanceManager.swift in Sources */,
 				364E71031CF9095000925C5B /* Dumpster.swift in Sources */,
+				361038D51CFB392900008017 /* Cloud.swift in Sources */,
 				364E70C01CF8E54900925C5B /* AppDelegate.swift in Sources */,
 				364E71131CF9DB3700925C5B /* FrontBackground.swift in Sources */,
 				364E71051CF90C6D00925C5B /* Player.swift in Sources */,
 				364E70F51CF8E7CF00925C5B /* TextureManager.swift in Sources */,
 				364E710B1CF9D2AD00925C5B /* ScrollingSceneryManager.swift in Sources */,
 				364E71111CF9DB2600925C5B /* MidBackground.swift in Sources */,
+				361038D31CFB354900008017 /* Tree.swift in Sources */,
 				364E71071CF90FC500925C5B /* GameManager.swift in Sources */,
 				364E71091CF9CF0000925C5B /* Asphalt.swift in Sources */,
 			);
@@ -453,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				364E70D81CF8E54A00925C5B /* RetroSkateTests.swift in Sources */,
+				361038D81CFB3A8300008017 /* CloudTest.swift in Sources */,
 				364E70F81CF8E87600925C5B /* TextureManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -34,7 +34,6 @@ extension Player {
 
     func jump() {
         guard !isJumping else {
-            print("👎 We can't jump, we're already jumping.  Idiot!")
             return
         }
         physicsBody?.applyImpulse(CGVector(dx: 0, dy: 60))
@@ -59,6 +58,7 @@ extension Player {
     func playCrashAnimation() {
         removeAllActions()
         runAction(SKAction.animateWithTextures(TextureManager.sharedManager.skaterCrashTextures, timePerFrame: 0.04))
+        runAction(SKAction.playSoundFileNamed("sfxCrash.wav", waitForCompletion: false))
     }
 
 }

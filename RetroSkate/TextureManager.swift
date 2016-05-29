@@ -37,9 +37,25 @@ class TextureManager {
     // Buildings
     private var buildingTextures = TextureManager.loadTextures("building", startIndex: 0, endIndex: 7)
 
-    
     var randomBuildingTexture: SKTexture {
-        return buildingTextures[Int(arc4random_uniform(8))]
+        let index = Int(arc4random_uniform(UInt32(buildingTextures.count)))
+        return buildingTextures[index]
+    }
+
+    // Trees
+    private var treeTextures = TextureManager.loadTextures("tree", startIndex: 0, endIndex: 1)
+
+    var randomTreeTexture: SKTexture {
+        let index = Int(arc4random_uniform(UInt32(treeTextures.count)))
+        return treeTextures[index]
+    }
+
+    // Clouds
+    private var cloudTextures = TextureManager.loadTextures("cloud", startIndex: 0, endIndex: 1)
+
+    var randomCloudTexture: SKTexture {
+        let index = Int(arc4random_uniform(UInt32(cloudTextures.count)))
+        return cloudTextures[index]
     }
 }
 

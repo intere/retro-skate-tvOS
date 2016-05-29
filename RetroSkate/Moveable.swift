@@ -16,6 +16,7 @@ class Moveable: SKSpriteNode {
     var moveAction: SKAction!
     var moveForever: SKAction!
     var yPos: CGFloat = 0
+    var xOffset: CGFloat = 0
 
 }
 
@@ -38,7 +39,29 @@ extension Moveable {
     }
 
     func didExceedBounds() {
-        position = CGPoint(x: Moveable.START_X_POSITION, y: yPos)
+        position = CGPoint(x: Moveable.START_X_POSITION + xOffset, y: yPos)
+    }
+
+}
+
+// MARK: - Helpers
+
+extension Moveable {
+
+    func randomInt(min: Int, max: Int) -> Int {
+        let random = Int(arc4random_uniform(UInt32(max - min))) + min
+        return random
+    }
+
+    func randomFloat(min: CGFloat, max: CGFloat) -> CGFloat {
+        let intMin = Int(min * 1000)
+        let intMax = Int(max * 1000)
+
+        return CGFloat(randomInt(intMin, max: intMax)) / 1000
+    }
+
+    func randomXOffset() -> CGFloat {
+        return randomFloat(0, max: 500)
     }
 
 }
