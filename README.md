@@ -11,6 +11,7 @@ A tvOS / SpriteKit skateboarding game.
 6. ~~Show random clouds behind the buildings, but in front of the background~~
 7. ~~Show the ollie animation whenever the skater jumps~~
 8. ~~Implement an Intro Scene with a Play button~~
-9. Implement a Game over popup that says game over and alerts the user restart the game
+9. ~~Implement a Game over popup that says game over and alerts the user restart the game~~
 10. ~~Implement two other types of ledge obstacles~~
 11. ~~Incorporate the fire hydrant obstacle~~
+12. Implement a sane Obstacle spawning mechanism

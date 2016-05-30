@@ -17,7 +17,8 @@ class GameScene: BaseScene {
     }
 
     override func didMoveToView(view: SKView) {
-        GameManager.sharedManager.playerDead = false
+
+        GameManager.sharedManager.resetGame()
         CollisionManager.sharedManager.scene = self
 
         setupBackground()
@@ -134,21 +135,6 @@ extension GameScene {
         }
     }
 
-    typealias Block = () -> Void
-
-    func waitAndRunBlock(maxWait: NSTimeInterval, repititions: Int, block: Block ) {
-        for i in 0..<repititions {
-            let wait = Double(arc4random_uniform(UInt32(maxWait*1000))) / Double(1000)
-            let waitAction = SKAction.waitForDuration(NSTimeInterval(i+1) * wait)
-            runAction(waitAction) {
-                guard GameManager.sharedManager.isPlayerAlive() else {
-                    return
-                }
-                block()
-            }
-        }
-    }
-
     func setupActions() {
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped(_:)))
@@ -159,18 +145,6 @@ extension GameScene {
         swipe.direction = .Up
         view?.addGestureRecognizer(swipe)
         
-    }
-
-    func playLevelMusic() {
-        AudioManager.sharedManager.playLevelMusic()
-    }
-
-    func stopPlayLevelMusic() {
-        AudioManager.sharedManager.stopLevelMusic()
-    }
-
-    func playGameOverSound() {
-        runAction(SKAction.playSoundFileNamed("sfxGameOver.wav", waitForCompletion: false))
     }
 }
 
@@ -189,11 +163,11 @@ extension GameScene : SKPhysicsContactDelegate {
 extension GameScene {
 
     func tapped(gesture: UITapGestureRecognizer) {
-        guard GameManager.sharedManager.isPlayerAlive() else {
-            return
+        if GameManager.sharedManager.isPlayerAlive() {
+            player.jump()
+        } else if GameManager.sharedManager.gameOverTimerExpired {
+            showIntro()
         }
-
-        player.jump()
     }
 
     func swiped(gesture: UISwipeGestureRecognizer) {
@@ -205,10 +179,71 @@ extension GameScene {
 
 }
 
+// MARK: - API
+
+extension GameScene {
+
+    func handleGameOver() {
+        runAction(SKAction.waitForDuration(1)) {
+            self.playGameOverSound()
+            self.showGameOver()
+        }
+
+    }
+
+    func stopPlayLevelMusic() {
+        AudioManager.sharedManager.stopLevelMusic()
+    }
+
+}
+
 
 // MARK: - Helpers
 
 private extension GameScene {
+
+    func waitAndRunBlock(maxWait: NSTimeInterval, repititions: Int, block: Block ) {
+        for i in 0..<repititions {
+            let wait = Double(arc4random_uniform(UInt32(maxWait*1000))) / Double(1000)
+            let waitAction = SKAction.waitForDuration(NSTimeInterval(i+1) * wait)
+            runAction(waitAction) {
+                guard GameManager.sharedManager.isPlayerAlive() else {
+                    return
+                }
+                block()
+            }
+        }
+    }
+
+    func playLevelMusic() {
+        AudioManager.sharedManager.playLevelMusic()
+    }
+
+    func playGameOverSound() {
+        runAction(SKAction.playSoundFileNamed("sfxGameOver.wav", waitForCompletion: false))
+    }
+
+    func showGameOver() {
+
+        let startPoint = CGPoint(x: 2000, y: 400)
+        let endPoint = CGPoint(x: 530, y: 400)
+
+        let gameOverNode = SKSpriteNode(color: UIColor.blackColor().colorWithAlphaComponent(0.8), size: CGSize(width: 800, height: 300))
+        gameOverNode.position = startPoint
+        gameOverNode.zPosition = 11
+
+
+        let gameOverText = SKSpriteNode(texture: TextureManager.sharedManager.gameOverTexture)
+        gameOverText.position = CGPoint(x: 0, y: 0)
+
+        gameOverNode.addChild(gameOverText)
+        addChild(gameOverNode)
+
+        gameOverNode.runAction(SKAction.moveTo(endPoint, duration: 2)) {
+            GameManager.sharedManager.gameOverTimerExpired = true
+        }
+
+    }
 
     func randomlySpawnCoin() {
         guard GameManager.sharedManager.isPlayerAlive() else {
@@ -231,6 +266,15 @@ private extension GameScene {
         coin.randomizePosition()
         addChild(coin)
         coin.startMoving()
+    }
+
+    func showIntro() {
+        guard let scene = IntroScene.createScene() else {
+            return
+        }
+
+        scene.scaleMode = .AspectFill
+        view?.presentScene(scene, transition: SKTransition.fadeWithColor(UIColor.blackColor(), duration: 2))
     }
 
 }

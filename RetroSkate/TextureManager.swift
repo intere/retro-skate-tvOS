@@ -13,6 +13,7 @@ class TextureManager {
 
     let titleTexture = SKTexture(imageNamed: "RetroSkate")
     let playTexture = SKTexture(imageNamed: "play")
+    let gameOverTexture = SKTexture(imageNamed: "game-over")
 
     // Background
     let frontBackgroundTexture = SKTexture(imageNamed: "bg1")

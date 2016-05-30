@@ -165,11 +165,10 @@ private extension IntroScene {
         }
     }
 
-    func waitThenDo(wait: NSTimeInterval, block: ()->()) {
-        let sequence = SKAction.sequence([ SKAction.waitForDuration(wait), SKAction.runBlock {
+    func waitThenDo(wait: NSTimeInterval, block: Block) {
+        runAction(SKAction.waitForDuration(wait)) {
             block()
-        }])
-        runAction(sequence)
+        }
     }
 
 }

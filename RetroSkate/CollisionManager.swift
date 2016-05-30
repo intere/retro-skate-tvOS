@@ -84,11 +84,7 @@ extension CollisionManager {
         scene.stopPlayLevelMusic()
 
         guard GameManager.sharedManager.lives > 0 else {
-            // TODO: Handle Game Over
-            scene.runAction(SKAction.waitForDuration(1)) {
-                scene.playGameOverSound()
-            }
-            print("GAME OVER!!!")
+            scene.handleGameOver()
             return
         }
 

@@ -8,6 +8,8 @@
 
 import SpriteKit
 
+typealias Block = () -> Void
+
 class GameManager {
     static let sharedManager = GameManager()
 
@@ -24,8 +26,8 @@ class GameManager {
     var score = 0
     var distance = 0
     var lives = GameManager.START_LIVES
-    var startTime = NSDate()
     var playerDead = true
+    var gameOverTimerExpired = false
 }
 
 // MARK: - API
@@ -40,7 +42,8 @@ extension GameManager {
         score = 0
         distance = 0
         lives = GameManager.START_LIVES
-        startTime = NSDate()
+        gameOverTimerExpired = false
+        playerDead = false
     }
 
 }
