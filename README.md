@@ -2,6 +2,12 @@
 
 A tvOS / SpriteKit skateboarding game.
 
+![Intro Scene](assets/screenshot1.png)
+![Game Scene - Skate](assets/screenshot2.png)
+![Game Scene - Player died](assets/screenshot3.png)
+![Game Scene - Ride off dumpster](assets/screenshot4.png)
+![Game Scene - Game Over](assets/screenshot5.png)
+
 ## TODO
 1. ~~Implement any swipe gesture recognizer while in the air to do a hardflip.~~ (when you press up)
 2. ~~Generate random coins throughout the level - if the skater touches them, he will collect them~~
