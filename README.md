@@ -14,4 +14,4 @@ A tvOS / SpriteKit skateboarding game.
 9. ~~Implement a Game over popup that says game over and alerts the user restart the game~~
 10. ~~Implement two other types of ledge obstacles~~
 11. ~~Incorporate the fire hydrant obstacle~~
-12. Implement a sane Obstacle spawning mechanism
+12. ~~Implement a sane Obstacle spawning mechanism~~

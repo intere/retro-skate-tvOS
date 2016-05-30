@@ -18,9 +18,11 @@ class GameManager {
     let GROUND_X_RESET: CGFloat = -150
     let ASPHALT_X_RESET: CGFloat = 145
     let BACKGROUND_X_RESET: CGFloat = -912
+    let FIRST_LEVEL_SPAWN_MAX: NSTimeInterval = 10
 
     // MARK: Defaults
-    static let START_LIVES = 1  // TODO - change this back to 5
+    static let START_LIVES = 3  // TODO - change this back to 5
+
 
     // MARK: Game State
     var score = 0

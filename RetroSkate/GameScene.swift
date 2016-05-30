@@ -18,23 +18,25 @@ class GameScene: BaseScene {
 
     override func didMoveToView(view: SKView) {
 
-        GameManager.sharedManager.resetGame()
+        GameManager.sharedManager.playerDead = false
         CollisionManager.sharedManager.scene = self
+        ObstacleManager.sharedManager.scene = self
 
         setupBackground()
         setupGround()
+        setupScenery()
 
         setupActions()
 
         player = Player()
         addChild(player)
 
-        setupObstacles()
-
         setupPhysics()
 //        playLevelMusic()
 
         randomlySpawnCoin()
+
+        ObstacleManager.sharedManager.beginSpawning(true)
     }
 
 }
@@ -99,36 +101,21 @@ extension GameScene {
         SceneryManager.sharedManager.createSidewalk(self)
     }
 
-    func setupObstacles() {
-        let dumpster = Dumpster()
-        addChild(dumpster)
-        dumpster.startMoving()
+    func setupScenery() {
 
-        let hydrant = FireHydrant()
-        addChild(hydrant)
-        hydrant.startMoving()
-
-        let rail = Rail()
-        addChild(rail)
-        rail.startMoving()
-
-        let ledge = Ledge()
-        addChild(ledge)
-        ledge.startMoving()
-
-        waitAndRunBlock(5, repititions: 3) {
+        waitAndRunBlock(5, repititions: 2) {
             let building = Building()
             self.addChild(building)
             building.startMoving()
         }
 
-        waitAndRunBlock(3, repititions: 2) {
+        waitAndRunBlock(3, repititions: 1) {
             let tree = Tree()
             self.addChild(tree)
             tree.startMoving()
         }
 
-        waitAndRunBlock(3, repititions: 3) {
+        waitAndRunBlock(3, repititions: 5) {
             let cloud = Cloud()
             self.addChild(cloud)
             cloud.startMoving()
@@ -184,6 +171,8 @@ extension GameScene {
 extension GameScene {
 
     func handleGameOver() {
+        ObstacleManager.sharedManager.scene = nil
+
         runAction(SKAction.waitForDuration(1)) {
             self.playGameOverSound()
             self.showGameOver()

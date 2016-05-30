@@ -18,6 +18,8 @@ class IntroScene: BaseScene {
     }
 
     override func didMoveToView(view: SKView) {
+        GameManager.sharedManager.resetGame()
+
         setupTitle()
         setupButton()
         setupBackground()

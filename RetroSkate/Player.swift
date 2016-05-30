@@ -58,7 +58,7 @@ extension Player {
     func playCrashAnimation() {
         removeAllActions()
         runAction(SKAction.animateWithTextures(TextureManager.sharedManager.skaterCrashTextures, timePerFrame: 0.04))
-        runAction(SKAction.playSoundFileNamed("sfxOllie.wav", waitForCompletion: false))
+        runAction(SKAction.playSoundFileNamed("sfxCrash.wav", waitForCompletion: false))
     }
 
 }

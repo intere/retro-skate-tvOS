@@ -22,6 +22,7 @@
 		361038ED1CFBB90400008017 /* IntroScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038EC1CFBB90400008017 /* IntroScene.swift */; };
 		361038EF1CFC707800008017 /* SceneryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038EE1CFC707800008017 /* SceneryManager.swift */; };
 		361038F31CFC7A7700008017 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038F21CFC7A7700008017 /* BaseScene.swift */; };
+		361038F51CFC8CE700008017 /* ObstacleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361038F41CFC8CE700008017 /* ObstacleManager.swift */; };
 		364E70C01CF8E54900925C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70BF1CF8E54900925C5B /* AppDelegate.swift */; };
 		364E70C21CF8E54900925C5B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 364E70C11CF8E54900925C5B /* GameScene.sks */; };
 		364E70C41CF8E54900925C5B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E70C31CF8E54900925C5B /* GameScene.swift */; };
@@ -91,6 +92,7 @@
 		361038EC1CFBB90400008017 /* IntroScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroScene.swift; sourceTree = "<group>"; };
 		361038EE1CFC707800008017 /* SceneryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneryManager.swift; sourceTree = "<group>"; };
 		361038F21CFC7A7700008017 /* BaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
+		361038F41CFC8CE700008017 /* ObstacleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObstacleManager.swift; sourceTree = "<group>"; };
 		364E70BC1CF8E54900925C5B /* RetroSkate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetroSkate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		364E70BF1CF8E54900925C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		364E70C11CF8E54900925C5B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				361038D01CFB329A00008017 /* DistanceManager.swift */,
 				361038E01CFB4A0A00008017 /* CollisionManager.swift */,
 				361038EE1CFC707800008017 /* SceneryManager.swift */,
+				361038F41CFC8CE700008017 /* ObstacleManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				364E71191CF9E63700925C5B /* AudioManager.swift in Sources */,
 				361038E91CFBAED300008017 /* RideableObstacle.swift in Sources */,
 				364E710F1CF9DB0800925C5B /* FarBackground.swift in Sources */,
+				361038F51CFC8CE700008017 /* ObstacleManager.swift in Sources */,
 				361038ED1CFBB90400008017 /* IntroScene.swift in Sources */,
 				364E70FA1CF8FD5900925C5B /* PhysicsBody.swift in Sources */,
 				361038CF1CFB138E00008017 /* HeadsUpDisplay.swift in Sources */,
