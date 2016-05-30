@@ -93,7 +93,7 @@ extension CollisionManager {
         }
 
         scene.runAction(SKAction.sequence([SKAction.waitForDuration(5), SKAction.runBlock {
-            guard let newScene = GameScene(fileNamed: "GameScene") else {
+            guard let newScene = GameScene.createScene() else {
                 return
             }
             newScene.scaleMode = .AspectFill

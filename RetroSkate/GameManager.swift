@@ -10,11 +10,17 @@ import SpriteKit
 
 class GameManager {
     static let sharedManager = GameManager()
+
+    // MARK: Game Configuration Values
     let GROUND_SPEED: CGFloat = -8.5
     let GROUND_X_RESET: CGFloat = -150
     let ASPHALT_X_RESET: CGFloat = 145
-    static let START_LIVES = 5
+    let BACKGROUND_X_RESET: CGFloat = -912
 
+    // MARK: Defaults
+    static let START_LIVES = 1  // TODO - change this back to 5
+
+    // MARK: Game State
     var score = 0
     var distance = 0
     var lives = GameManager.START_LIVES

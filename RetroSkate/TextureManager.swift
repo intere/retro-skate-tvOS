@@ -11,6 +11,9 @@ import SpriteKit
 class TextureManager {
     static let sharedManager = TextureManager()
 
+    let titleTexture = SKTexture(imageNamed: "RetroSkate")
+    let playTexture = SKTexture(imageNamed: "play")
+
     // Background
     let frontBackgroundTexture = SKTexture(imageNamed: "bg1")
     let midBackgroundTexture = SKTexture(imageNamed: "bg2")

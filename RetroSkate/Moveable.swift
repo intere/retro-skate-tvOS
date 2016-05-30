@@ -17,6 +17,7 @@ class Moveable: SKSpriteNode {
     var moveForever: SKAction!
     var yPos: CGFloat = 0
     var xOffset: CGFloat = 0
+    var removeOnExceed: Bool = false
 
 }
 
@@ -39,6 +40,10 @@ extension Moveable {
     }
 
     func didExceedBounds() {
+        guard !removeOnExceed else {
+            removeMe()
+            return
+        }
         position = CGPoint(x: Moveable.START_X_POSITION + xOffset, y: yPos)
     }
 
@@ -62,6 +67,19 @@ extension Moveable {
 
     func randomXOffset() -> CGFloat {
         return randomFloat(-500, max: 500)
+    }
+
+}
+
+// MARK: - Private Helpers
+
+private extension Moveable {
+
+    func removeMe() {
+        if let rideable = self as? RideableObstacle {
+            rideable.top.removeFromParent()
+        }
+        removeFromParent()
     }
 
 }

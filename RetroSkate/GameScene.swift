@@ -8,12 +8,13 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
-    let ASP_PIECES = 15
-    let SIDEWALK_PIECES = 24
-    let BACKGROUND_X_RESET: CGFloat = -912
+class GameScene: BaseScene {
 
     var player: Player!
+
+    class func createScene() -> GameScene? {
+        return GameScene(fileNamed: "GameScene")
+    }
 
     override func didMoveToView(view: SKView) {
         GameManager.sharedManager.playerDead = false
@@ -83,9 +84,9 @@ extension GameScene {
             addChild(farBackground)
         }
 
-        ScrollingSceneryManager.sharedManager.addScrollingScenery(frontBG, startPosition: CGPoint(x: 0, y: 400), resetXPosition: BACKGROUND_X_RESET, moveSpeed: -2)
-        ScrollingSceneryManager.sharedManager.addScrollingScenery(midBG, startPosition: CGPoint(x: 0, y: 450), resetXPosition: BACKGROUND_X_RESET, moveSpeed: -1)
-        ScrollingSceneryManager.sharedManager.addScrollingScenery(farBG, startPosition: CGPoint(x: 0, y: 500), resetXPosition: BACKGROUND_X_RESET, moveSpeed: -0.5)
+        ScrollingSceneryManager.sharedManager.addScrollingScenery(frontBG, startPosition: CGPoint(x: 0, y: 400), resetXPosition: GameManager.sharedManager.BACKGROUND_X_RESET, moveSpeed: -2)
+        ScrollingSceneryManager.sharedManager.addScrollingScenery(midBG, startPosition: CGPoint(x: 0, y: 450), resetXPosition: GameManager.sharedManager.BACKGROUND_X_RESET, moveSpeed: -1)
+        ScrollingSceneryManager.sharedManager.addScrollingScenery(farBG, startPosition: CGPoint(x: 0, y: 500), resetXPosition: GameManager.sharedManager.BACKGROUND_X_RESET, moveSpeed: -0.5)
 
         let hud = HeadsUpDisplay()
         hud.position = CGPoint(x: 500, y: 600)
@@ -93,30 +94,13 @@ extension GameScene {
     }
 
     func setupGround() {
-        var asphaltPieces = [Asphalt]()
-
-        for _ in 0..<ASP_PIECES {
-            let asphalt = Asphalt()
-            asphaltPieces.append(asphalt)
-            addChild(asphalt)
-        }
-        DistanceManager.sharedManager.node = asphaltPieces.first!
-        ScrollingSceneryManager.sharedManager.addScrollingScenery(asphaltPieces, startPosition: CGPoint(x: 0, y: GameManager.sharedManager.ASPHALT_X_RESET), resetXPosition: GameManager.sharedManager.GROUND_X_RESET, moveSpeed: GameManager.sharedManager.GROUND_SPEED)
-
-        var sidewalkPieces = [Sidewalk]()
-
-        for _ in 0..<SIDEWALK_PIECES {
-            let sidewalk = Sidewalk()
-            sidewalkPieces.append(sidewalk)
-            addChild(sidewalk)
-        }
-        ScrollingSceneryManager.sharedManager.addScrollingScenery(sidewalkPieces, startPosition: CGPoint(x: 0, y: 190), resetXPosition: GameManager.sharedManager.GROUND_X_RESET, moveSpeed: GameManager.sharedManager.GROUND_SPEED)
+        SceneryManager.sharedManager.createAsphalt(self)
+        SceneryManager.sharedManager.createSidewalk(self)
     }
 
     func setupObstacles() {
         let dumpster = Dumpster()
         addChild(dumpster)
-        addChild(dumpster.top)
         dumpster.startMoving()
 
         let hydrant = FireHydrant()
@@ -125,12 +109,10 @@ extension GameScene {
 
         let rail = Rail()
         addChild(rail)
-        addChild(rail.top)
         rail.startMoving()
 
         let ledge = Ledge()
         addChild(ledge)
-        addChild(ledge.top)
         ledge.startMoving()
 
         waitAndRunBlock(5, repititions: 3) {
@@ -168,12 +150,15 @@ extension GameScene {
     }
 
     func setupActions() {
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped(_:)))
         tap.allowedPressTypes = [NSNumber(integer: UIPressType.Select.rawValue)]
         view?.addGestureRecognizer(tap)
+
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swiped(_:)))
         swipe.direction = .Up
         view?.addGestureRecognizer(swipe)
+        
     }
 
     func playLevelMusic() {
