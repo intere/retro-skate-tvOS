@@ -32,7 +32,7 @@ class GameScene: BaseScene {
         addChild(player)
 
         setupPhysics()
-//        playLevelMusic()
+        playLevelMusic()
 
         randomlySpawnCoin()
 

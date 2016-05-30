@@ -34,7 +34,7 @@ extension HeadsUpDisplay {
 
         coinDisplay.text = "\(GameManager.sharedManager.score)"
         playerDisplay.text = "\(GameManager.sharedManager.lives)"
-        distanceDisplay.text = "\(DistanceManager.sharedManager.distance/100) meters"
+        distanceDisplay.text = "\(GameManager.sharedManager.distance/100) meters"
 
     }
 

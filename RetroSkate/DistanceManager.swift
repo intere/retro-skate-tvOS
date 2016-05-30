@@ -12,8 +12,6 @@ class DistanceManager {
     static let sharedManager = DistanceManager()
 
     var node: Asphalt!
-
-    var distance: Int = 0
     var lastX: CGFloat = -123456
 
 }
@@ -40,12 +38,12 @@ extension DistanceManager {
             let rightDeltaX = abs(GameManager.sharedManager.GROUND_X_RESET - node.position.x)
             assert(rightDeltaX >= 0)
 
-            distance += Int(leftDeltaX + rightDeltaX)
+            GameManager.sharedManager.distance += Int(leftDeltaX + rightDeltaX)
         } else {
             let deltaX = abs(node.position.x - lastX)
             assert(deltaX >= 0)
 
-            distance += Int(deltaX)
+            GameManager.sharedManager.distance += Int(deltaX)
         }
         
         lastX = node.position.x
